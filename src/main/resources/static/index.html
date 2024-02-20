@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasha daun ebaniy</title>
+    <style>
+        body {
+            background-color: #121212; /* Цвет фона страницы */
+            color: rgb(255, 255, 255); /* Цвет текста */
+            font-family: Arial, sans-serif; /* Шрифт текста */
+            margin: 0; /* Убираем отступы по умолчанию */
+            padding: 0; /* Убираем отступы по умолчанию */
+        }
+        header {
+            background-color: #1F1F1F; /* Цвет фона шапки */
+            padding: 20px; /* Поля вокруг текста */
+            text-align: center; /* Выравнивание текста по центру */
+        }
+        h1 {
+            margin: 0; /* Убираем отступы у заголовка */
+            padding: 0; /* Убираем отступы у заголовка */
+            font-size: 36px; /* Размер заголовка */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Sasha sosi</h1>
+</header>
+<div id="searchBox">
+    <form action="http://localhost:8080/api/v1/stats/sashka" method="get">
+        <input type="text" id="nickname" name="nickname" required>
+        <input type="submit" value="Enter nickname">
+    </form>
+</div>
+</body>
+</html>
