@@ -6,34 +6,101 @@
     <title>Faceit API</title>
     <style>
         body {
-            background-color: #121212; /* Цвет фона страницы */
-            color: rgb(255, 255, 255); /* Цвет текста */
+            background-image: url('faceit2.jpg');
+            background-color: #000; /* Черный цвет фона страницы */
+            color: #fff; /* Белый цвет текста */
             font-family: Arial, sans-serif; /* Шрифт текста */
             margin: 0; /* Убираем отступы по умолчанию */
             padding: 0; /* Убираем отступы по умолчанию */
-        }
-        header {
-            background-color: #1F1F1F; /* Цвет фона шапки */
-            padding: 20px; /* Поля вокруг текста */
-            text-align: center; /* Выравнивание текста по центру */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         h1 {
             margin: 0; /* Убираем отступы у заголовка */
             padding: 0; /* Убираем отступы у заголовка */
             font-size: 36px; /* Размер заголовка */
         }
+        #searchBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"],
+        input[type="submit"] {
+            padding: 10px;
+            border-radius: 10px; /* Закругление углов */
+            margin-bottom: 10px; /* Отступ снизу */
+            border: none;
+        }
+        input[type="text"] {
+            width: 200px; /* Ширина поля ввода */
+
+            border: 2px solid #fff;
+            background-color: #1c1c1c; /* Черный цвет фона поля ввода */
+            color: #fff; /* Белый цвет текста в поле ввода */
+        }
+        #searchBox {
+            position: relative; /* Устанавливаем родительский контейнер как относительно позиционированный */
+        }
+
+        input[type="submit"] {
+            width: 35px;
+            height: 35px;
+            background-color: #ff6600; /* Оранжевый цвет кнопки */
+            color: white;
+            cursor: pointer;
+            text-indent: -9999px;
+            font-size: 0;
+            position: absolute;
+            /*top: 415px; !* Поднимает кнопку на 10px вверх *!*/
+            top: 2px; /*!* Поднимает кнопку на 10px вверх*/
+            right:-40px;
+        }
+        input[type="submit"]:hover {
+
+            /*background-color: #ffb804;*/
+            color: black;
+            border: 2px solid #fff;
+            /* Оранжевый цвет кнопки при наведении */
+        }
+        #blackRectangle {
+            border-radius: 10px;
+            width: 300px;
+            height: 150px;
+            background-color: rgba(40, 40, 40, 1);
+            position: absolute; /* Абсолютное позиционирование для прямоугольника */
+            top: -90px; /* Положение прямоугольника относительно поля ввода */
+            right: -57px; /* Положение прямоугольника относительно поля ввода */
+            z-index: -1;
+        }
+        #logo {
+            background-size: cover;
+            border-radius: 10px;
+            width: 100px;
+            height: 100px;
+            background-image: url('logo3.png');
+
+            position: absolute; /* Абсолютное позиционирование для прямоугольника */
+            top: -90px; /* Положение прямоугольника относительно поля ввода */
+            right: 50px; /* Положение прямоугольника относительно поля ввода */
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-<header>
-    <h1>Game statistic</h1>
-</header>
-</header>
+<!--<header>-->
+<!--    <h1>FACEIT</h1>-->
+<!--</header>-->
 <div id="searchBox">
-    <form action="http://localhost:8080/api/v1/stats/sashka" method="get">
+    <form action="http://localhost:8080/api/v1/faceit/info" method="get">
         <input type="text" id="nickname" name="nickname" required>
         <input type="submit" value="Enter nickname">
     </form>
+    <div id="blackRectangle"></div>
+    <div id="logo"></div>
+
 </div>
 </body>
 </html>
