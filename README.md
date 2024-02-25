@@ -1,50 +1,46 @@
 # Faceit Api
 
-## О проекте
+## About the Project
 
-Faceit Api - это проект, который предоставляет простой способ получения статистики игроков в Counter-Strike: Global Offensive с помощью Faceit API. Faceit является одной из ведущих платформ для игры в многопользовательские онлайн-игры, такие как Counter-Strike: Global Offensive, Dota 2 и другие.
+Faceit Api is a project that provides a simple way to retrieve player statistics in Counter-Strike: Global Offensive using the Faceit API. Faceit is one of the leading platforms for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
 
-## Установка и запуск
+## Installation and Running
 
-1. Клонируйте репозиторий на локальный компьютер:
+1. Clone the repository to your local computer:
 
     ```
-    https://github.com/k9targex/FaceitApi.git
+    git clone https://github.com/k9targex/FaceitApi.git
     ```
 
-2. Убедитесь, что у вас установлена Apache Maven версии 3.9.6 или выше.
+2. Ensure you have Apache Maven version 3.9.6 or higher installed.
 
-2. Откройте командную строку или терминал и перейдите в корневую директорию проекта.
+3. Open the command prompt or terminal and navigate to the project's root directory.
 
-3. Выполните следующие команды:
+4. Execute the following commands:
 
     ```
     mvn clean install
     java -jar target\Faceit-0.0.1-SNAPSHOT.jar
     ```
 
-   Эти команды очистят проект, скомпилируют и упакуют его в JAR-файл и запустят приложение по адресу [http://localhost:8080](http://localhost:8080).
+   These commands will clean the project, compile and package it into a JAR file, and run the application at [http://localhost:8080](http://localhost:8080).
 
+## Usage
 
+### Home Page
 
-## Использование
+1. Go to [http://localhost:8080](http://localhost:8080) in your web browser.
 
-### Главная страница
+2. Enter the player's nickname in the input field and click the button to retrieve statistics.
 
-1. Перейдите на [http://localhost:8080](http://localhost:8080) в вашем браузере.
+3. The application will send a request to the Faceit API to retrieve the player's statistics and display them on the page.
 
-2. Введите никнейм игрока в поле для ввода и нажмите кнопку для получения статистики.
+### Example
 
-3. Приложение отправит запрос к Faceit API для получения статистики игрока и выведет её на странице.
+Suppose you want to get statistics for a player with the nickname "s1mple".
 
-### Пример
+1. Go to [http://localhost:8080](http://localhost:8080).
 
-Допустим, вы хотите получить статистику игрока с никнеймом "s1mple".
+2. Enter "s1mple" in the input field and click the button.
 
-1. Перейдите на [http://localhost:8080](http://localhost:8080).
-
-2. Введите "s1mple" в поле для ввода и нажмите кнопку.
-
-3. Вы увидите статистику игрока "s1mple", предоставленную Faceit API.
-
-
+3. You will see the statistics for the player "s1mple" provided by the Faceit API.
