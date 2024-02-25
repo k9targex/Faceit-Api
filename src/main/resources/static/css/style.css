@@ -114,26 +114,21 @@ input[type="submit"]:hover {
 
 }
 
-/* CSS стили для каждой статистики игрока */
 .playerStat {
     margin-bottom: 15px;
 }
 
-/* CSS стили для метки статистики */
 .statLabel {
     font-family:'Courier New', Courier, monospace;
     background-color: #484747;
     color: #fff;
     padding: 2px 10px;
     border-radius: 5px;
-    right:0px;
     margin-right: 50px;
 }
 
-/* CSS стили для значения статистики */
 .statValue {
     font-family:'Courier New', Courier, monospace;
-    margin-right: 0px;
     float:right;
     font-weight: bold;
     color: #fff;

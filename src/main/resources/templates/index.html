@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="../static/css/style.css">
             <link rel="stylesheet" href="" th:href="@{/css/style.css}">
 
     <meta charset="UTF-8">
@@ -9,7 +8,6 @@
     <title>Faceit API</title>
 </head>
 <body>
-<!--    <div id="blackRectangle">-->
     <div id="blackRectangle">
     <div id = "logoMain"></div>
 
@@ -47,13 +45,13 @@
                 <div class="playerStat">
                     <div th:if="${playerInfoAndStats!=null}">
                     <span class="statLabel">Games:</span>
-                    <span class="statValue" id="averageKDValue"th:text="${playerInfoAndStats.playerStats.lifetime.matches}">-</span>
+                    <span class="statValue" id="averageKDValue" th:text="${playerInfoAndStats.playerStats.lifetime.matches}">-</span>
                     </div>
                 </div>
                 <div class="playerStat">
                     <div th:if="${playerInfoAndStats!=null}">
                     <span class="statLabel">Win %:</span>
-                    <span class="statValue" id="winPercentageValue"th:text="${playerInfoAndStats.playerStats.lifetime.winRate}">-</span>
+                    <span class="statValue" id="winPercentageValue" th:text="${playerInfoAndStats.playerStats.lifetime.winRate}">-</span>
                     </div>
                 </div>
 
@@ -79,20 +77,7 @@
                 </div>
 
             </div>
-<!--    <div id="logo"></div>-->
-    
-    <!--    <div id=""></div>-->
-<!--    <div th:if="${playerInfoAndStats!=null}">-->
-<!--         <span th:text="${playerInfoAndStats.playerStats.lifetime.averageKDRatio}"></span>-->
-<!--    </div>-->
-<!--    <div th:if="${playerInfoAndStats!=null}">-->
-<!--        <span th:text="${playerInfoAndStats.playerInfo.items[0].avatarUrl}"></span>-->
-        
 
 
-    </div>
-</div>
-<!--    </div>-->
-<!--</>-->
 </body>
 </html>

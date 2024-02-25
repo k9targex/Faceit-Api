@@ -1,4 +1,5 @@
-package com.Faceit.Faceit.model;
+package com.faceit.faceit.model;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerItem {
     @JsonProperty("player_id")
-    private String player_id;
+    private String playerId;
 
     @JsonProperty("nickname")
     private String nickname;
