@@ -16,6 +16,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    border-radius: 10px;
+    width: 300px;
+    height: 600px;
+    background-color: rgba(40, 40, 40, 1);
+    margin-left: auto;
+    margin-right: auto;
+    top: 50px;
 }
 
 input[type="text"]
@@ -64,17 +72,6 @@ input[type="submit"]:hover {
 
 }
 
-#blackRectangle {
-    position: relative;
-    border-radius: 10px;
-    width: 300px;
-    height: 600px;
-    background-color: rgba(40, 40, 40, 1);
-    margin-left: auto;
-    margin-right: auto;
-    top: 50px;
-}
-
 #logoMain{
     position: absolute;
     margin-right: auto ;
@@ -85,7 +82,6 @@ input[type="submit"]:hover {
     width: 700px;
     height: 120px;
     background-image: url('logoMain.png');
-    /* position: absolute; */
     top: -90px;
     z-index: 1;
 }
