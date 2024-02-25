@@ -1,19 +1,16 @@
-package com.Faceit.Faceit.model;
+package com.faceit.faceit.model;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
- import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
- import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
+
+import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-/* ObjectMapper om = new ObjectMapper();
-Root root = om.readValue(myJsonString, Root.class); */
-
+import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
@@ -48,6 +45,6 @@ public class LifetimeStats {
     public String kDRatio;
 
     @JsonIgnore
-    public ArrayList<String> recentResults;
+    public  List<String> recentResults;
 
 }

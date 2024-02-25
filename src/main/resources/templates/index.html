@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<!--<link rel="stylesheet" href="../static/css/style.css">-->
-           <link rel="stylesheet" href="" th:href="@{/css/style.css}">
+<link rel="stylesheet" href="../static/css/style.css">
+            <link rel="stylesheet" href="" th:href="@{/css/style.css}">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faceit API</title>
 </head>
 <body>
-    <div id = "logoMain"></div>
+<!--    <div id="blackRectangle">-->
     <div id="blackRectangle">
-        
+    <div id = "logoMain"></div>
+
         <div id="searchBox">
             <form action="http://localhost:8080/api/v1/faceit/info" method="get">
                 <input type="text" id="nickname" name="nickname" required>

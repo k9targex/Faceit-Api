@@ -1,12 +1,11 @@
-package com.Faceit.Faceit.model;
-import com.Faceit.Faceit.model.LifetimeStats;
+package com.faceit.faceit.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 @Data
 @Builder
 
@@ -14,9 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerStats {
-//
-//    private String player_id;
-//    private String game_id;
     private LifetimeStats lifetime;
 }
 
