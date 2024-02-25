@@ -1,3 +1,7 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+
 # <center>Faceit Api</center>
 
 ## About the Project
