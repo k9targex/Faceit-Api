@@ -1,4 +1,4 @@
-# Faceit Api
+# <center>Faceit Api</center>
 
 ## About the Project
 
