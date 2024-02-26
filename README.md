@@ -1,39 +1,50 @@
-# Faceit Api
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
 
-## О проекте
+# <center>Faceit Api</center>
 
-Faceit Api - это проект, который предоставляет простой способ получения статистики игроков в Counter-Strike: Global Offensive с помощью Faceit API. Faceit является одной из ведущих платформ для игры в многопользовательские онлайн-игры, такие как Counter-Strike: Global Offensive, Dota 2 и другие.
+## About the Project
 
-## Установка
+Faceit Api is a project that provides a simple way to retrieve player statistics in Counter-Strike: Global Offensive using the Faceit API. Faceit is one of the leading platforms for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
 
-1. Клонируйте репозиторий на локальный компьютер:
+## Installation and Running
+
+1. Clone the repository to your local computer:
 
     ```
-    https://github.com/k9targex/FaceitApi.git
+    git clone https://github.com/k9targex/FaceitApi.git
     ```
 
-2. Откройте проект в вашей любимой среде разработки (например, IntelliJ IDEA, Eclipse).
+2. Ensure you have Apache Maven version 3.9.6 or higher installed.
 
-3. Запустите FaceitApplication
+3. Open the command prompt or terminal and navigate to the project's root directory.
 
-## Использование
+4. Execute the following commands:
 
-### Главная страница
+    ```
+    mvn clean install
+    java -jar target\Faceit-0.0.1-SNAPSHOT.jar
+    ```
 
-1. Перейдите на [http://localhost:8080](http://localhost:8080) в вашем браузере.
+   These commands will clean the project, compile and package it into a JAR file, and run the application at [http://localhost:8080](http://localhost:8080).
 
-2. Введите никнейм игрока в поле для ввода и нажмите кнопку для получения статистики.
+## Usage
 
-3. Приложение отправит запрос к Faceit API для получения статистики игрока и выведет её на странице.
+### Home Page
 
-### Пример
+1. Go to [http://localhost:8080](http://localhost:8080) in your web browser.
 
-Допустим, вы хотите получить статистику игрока с никнеймом "s1mple".
+2. Enter the player's nickname in the input field and click the button to retrieve statistics.
 
-1. Перейдите на [http://localhost:8080](http://localhost:8080).
+3. The application will send a request to the Faceit API to retrieve the player's statistics and display them on the page.
 
-2. Введите "s1mple" в поле для ввода и нажмите кнопку.
+### Example
 
-3. Вы увидите статистику игрока "s1mple", предоставленную Faceit API.
+Suppose you want to get statistics for a player with the nickname "s1mple".
 
+1. Go to [http://localhost:8080](http://localhost:8080).
 
+2. Enter "s1mple" in the input field and click the button.
+
+3. You will see the statistics for the player "s1mple" provided by the Faceit API.
