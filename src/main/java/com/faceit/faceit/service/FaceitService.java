@@ -1,5 +1,6 @@
 package com.faceit.faceit.service;
 import com.faceit.faceit.model.PlayerInfoAndStats;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import com.faceit.faceit.model.PlayerStats;
@@ -8,11 +9,10 @@ import com.faceit.faceit.model.PlayerInfo;
 
 @Service
 public class FaceitService {
+    @Value("${faceit.api}")
+    private String token;
 
     public PlayerInfoAndStats getRequest(String nickname) {
-
-
-        String token = "Bearer 88887511-8b30-4eaa-a38a-ad593868dfac";
         String templateByNickname = "https://open.faceit.com/data/v4/search/players?nickname=%s&game=cs2&offset=0&limit=1";
 
         String urlByNickname = String.format(templateByNickname, nickname);
