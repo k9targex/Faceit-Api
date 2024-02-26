@@ -9,7 +9,7 @@ import com.faceit.faceit.model.PlayerInfo;
 @Service
 public class FaceitService {
 
-    public static PlayerInfoAndStats getRequest(String nickname) {
+    public PlayerInfoAndStats getRequest(String nickname) {
 
 
         String token = "Bearer 88887511-8b30-4eaa-a38a-ad593868dfac";

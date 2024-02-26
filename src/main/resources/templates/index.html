@@ -1,15 +1,22 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-            <link rel="stylesheet" href="" th:href="@{/css/style.css}">
-
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faceit API</title>
 </head>
 <body>
     <div id="blackRectangle">
-    <div id = "logoMain"></div>
+        <script>
+            function showStats() {
+                var block = document.getElementById('blackRectangle');
+                block.style.height = '600px'
+            }
+
+        </script>
+
+        <div id = "logoMain"></div>
 
         <div id="searchBox">
             <form action="http://localhost:8080/api/v1/faceit/info" method="get">
@@ -18,14 +25,17 @@
             </form>
         </div>
         <div th:if="${playerInfoAndStats!=null}">
-        <img id="avatar"  th:src="${playerInfoAndStats.playerInfo.items[0].avatarUrl}" alt="avatar">
+            <script>
+                showStats();
+            </script>
+            <img id="avatar"  th:src="${playerInfoAndStats.playerInfo.items[0].avatarUrl}" alt="avatar" >
+
         </div>
             <div id="statscheck">
-
                 <div class="playerStat">
                     <div th:if="${playerInfoAndStats!=null}">
-                   <span class="statLabel">Nickname:</span>
-                     <span class="statValue" id="nicknameValue" th:text="${playerInfoAndStats.playerInfo.items[0].nickname}">-</span>
+                        <span class="statLabel">Nickname:</span>
+                        <span class="statValue" id="nicknameValue" th:text="${playerInfoAndStats.playerInfo.items[0].nickname}">-</span>
                     </div>
                  </div> 
                  <div class="playerStat">
@@ -78,6 +88,6 @@
 
             </div>
 
-
 </body>
+
 </html>

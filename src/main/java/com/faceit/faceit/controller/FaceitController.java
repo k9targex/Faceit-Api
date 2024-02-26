@@ -15,10 +15,13 @@ import org.springframework.web.client.HttpClientErrorException;
 @Controller
 @RequestMapping("api/v1")
 public class FaceitController {
+
+    private final FaceitService faceitService;
+    public FaceitController(FaceitService faceitService){this.faceitService = faceitService;}
     @GetMapping("/faceit/info")
     public String hello(@RequestParam(defaultValue = "s1mple") String nickname, Model model) {
         try {
-            PlayerInfoAndStats playerInfoAndStats = FaceitService.getRequest(nickname);
+            PlayerInfoAndStats playerInfoAndStats = faceitService.getRequest(nickname);
             model.addAttribute("playerInfoAndStats", playerInfoAndStats);
             return "index";
         } catch (HttpClientErrorException.NotFound errorException) {
