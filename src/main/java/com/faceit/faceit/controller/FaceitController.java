@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
-import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 
 @Controller
@@ -22,11 +22,18 @@ public class FaceitController {
     private final FaceitService faceitService;
     public FaceitController(FaceitService faceitService){this.faceitService = faceitService;}
 
-    @ExceptionHandler(HttpClientErrorException.NotFound.class)
-    public ResponseEntity<String> handleNotFoundException() {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Player not found");
+    @ExceptionHandler(WebClientResponseException.BadRequest.class)
+    public ResponseEntity<String> handleBadRequestException(WebClientResponseException.BadRequest ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Something bad with request: " + ex.getMessage());
     }
-
+    @ExceptionHandler(WebClientResponseException.NotFound.class)
+    public ResponseEntity<String> handleNotFoundException(WebClientResponseException.NotFound ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Sorry, something went wrong: " + ex.getMessage());
+    }
+    @ExceptionHandler(WebClientResponseException.class)
+    public ResponseEntity<String> handleNotFoundException(WebClientResponseException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + ex.getMessage());
+    }
     @GetMapping("/faceit/info")
     public String getControl(@RequestParam(defaultValue = "s1mple") String nickname, Model model) {
             PlayerInfoAndStats playerInfoAndStats = faceitService.getRequest(nickname);

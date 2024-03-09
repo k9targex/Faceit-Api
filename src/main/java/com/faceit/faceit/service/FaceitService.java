@@ -1,10 +1,12 @@
 package com.faceit.faceit.service;
 import com.faceit.faceit.model.PlayerInfoAndStats;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import com.faceit.faceit.model.PlayerStats;
 import com.faceit.faceit.model.PlayerInfo;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 
 @Service
@@ -24,7 +26,8 @@ public class FaceitService {
                 .retrieve()
                 .bodyToMono(PlayerInfo.class)
                 .block();
-        if (responseByNickname != null) {
+
+        if (responseByNickname != null && !responseByNickname.getItems().isEmpty()) {
             String templateById = "https://open.faceit.com/data/v4/players/%s/stats/cs2";
             String urlById = String.format(templateById, responseByNickname.getItems().get(0).getPlayerId());
 
@@ -44,7 +47,7 @@ public class FaceitService {
             return playerInfoAndStats;
         }
         else
-            throw new NullPointerException("Not found");
+            throw new WebClientResponseException(HttpStatus.NOT_FOUND.value(), "Player not found", null, null, null);
     }
     private FaceitService() {}
 }

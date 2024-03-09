@@ -24,6 +24,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     top: 50px;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+
 }
 
 input[type="text"]
@@ -39,6 +41,8 @@ input[type="text"]
 
     background-color: #1c1c1c;
     color: #fff;
+    box-shadow: 0 0 10px #ededed;
+
 }
 
 input[type="submit"] {
@@ -61,6 +65,8 @@ input[type="submit"] {
     text-indent: -9999px;
     font-size: 0;
     border: 1px solid #fff;
+    box-shadow: 0 0 5px #ededed;
+
 }
 
 
@@ -82,8 +88,8 @@ input[type="submit"]:hover {
     width: 700px;
     height: 120px;
     background-image: url('logoMain.png');
-    top: -90px;
-    z-index: 1;
+    top: -100px;
+    z-index: -10;
 }
 #logo {
     background-size: cover;
@@ -107,30 +113,37 @@ input[type="submit"]:hover {
     width:195px;
     height:195px;
     z-index: 1;
+    box-shadow: 0 0 15px #ffffff;
 
+
+}
+
+#statscheck{
+    width:270px;
 }
 
 .playerStat {
     margin-bottom: 16px;
-
 }
 
 .statLabel {
     font-family:'Courier New', Courier, monospace;
-    background-color: #484747;
+    background-color: rgba(40, 40, 40, 1);
+
     color: #fff;
     padding: 2px 10px;
     border-radius: 5px;
-    margin-right: 50px;
+    box-shadow: 0 0 5px rgba(241, 236, 236, 0.71);
+
 }
 
 .statValue {
     font-family:'Courier New', Courier, monospace;
     float:right;
-    font-weight: bold;
     color: #fff;
-    background-color: #484747;
+    background-color: rgba(40, 40, 40, 1);
     padding: 2px 10px;
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(241, 236, 236, 0.71);
 
 }
