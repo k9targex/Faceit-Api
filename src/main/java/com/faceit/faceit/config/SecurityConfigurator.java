@@ -2,7 +2,7 @@ package com.faceit.faceit.config;
 
 import com.faceit.faceit.security.TokenFilter;
 import com.faceit.faceit.service.UserService;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +22,14 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
+<<<<<<< HEAD
+import java.util.Arrays;
+
+=======
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
 @Configuration
 @EnableWebSecurity
-@NoArgsConstructor
+@Data
 public class SecurityConfigurator {
     private TokenFilter tokenFilter;
     private UserService userService;
@@ -60,15 +65,30 @@ public class SecurityConfigurator {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+<<<<<<< HEAD
+                .cors(cors -> cors
+                        .configurationSource(request -> {
+                            CorsConfiguration configuration = new CorsConfiguration();
+                            configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080")); // Разрешенные источники
+                            configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE")); // Разрешенные методы
+                            configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Разрешенные заголовки
+                            return configuration;
+                        })
+=======
                 .cors(httpSecurityCorsConfigurer ->
                         httpSecurityCorsConfigurer.configurationSource(request ->
                                 new CorsConfiguration().applyPermitDefaultValues())
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
                 )
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
                 .sessionManagement(session -> session
+<<<<<<< HEAD
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+=======
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**").permitAll()
@@ -79,4 +99,8 @@ public class SecurityConfigurator {
         return http.build();
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
