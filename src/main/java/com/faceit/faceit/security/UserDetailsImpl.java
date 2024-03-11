@@ -5,11 +5,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-<<<<<<< HEAD
-=======
-import java.util.Collections;
-
->>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
 @Data
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
@@ -24,14 +19,9 @@ public class UserDetailsImpl implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-<<<<<<< HEAD
         return null;
     }
-=======
-        return Collections.emptyList();
-    }
 
->>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
     @Override
     public String getPassword() {
         return password;

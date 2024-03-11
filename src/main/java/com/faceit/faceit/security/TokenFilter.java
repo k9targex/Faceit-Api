@@ -29,11 +29,8 @@ public class TokenFilter extends OncePerRequestFilter {
 
     @Autowired
     public void setUserDetailsService(UserDetailsService userDetailsService) {
-<<<<<<< HEAD
         this.userDetailsService=userDetailsService;
-=======
     this.userDetailsService=userDetailsService;
->>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
     }
     @Autowired
     public void setJwtCore(JwtCore jwtCore) {
@@ -48,8 +45,7 @@ public class TokenFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken auth = null;
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-<<<<<<< HEAD
-        if (!(request.getRequestURI().equals("/auth/signin")) && !(request.getRequestURI().equals("/auth/signup"))){
+        if (!(request.getRequestURI().equals("/auth/signin")) && !(request.getRequestURI().equals("/auth/signup"))) {
             try {
                 String headerAuth = request.getHeader("Authorization");
                 if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
@@ -69,33 +65,7 @@ public class TokenFilter extends OncePerRequestFilter {
                 logger.error("JWT token error: {}", e);
             }
         }
-            filterChain.doFilter(request, response);
-
-=======
-
-        try{
-            String headerAuth = request.getHeader("Authorization");
-            if(headerAuth!= null && headerAuth.startsWith("Bearer ")){
-                jwt = headerAuth.substring(7);
-            }
-            if(jwt != null){
-                    username = jwtCore.getNameFromJwt(jwt);
-
-                }
-                if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-                    userDetails = userDetailsService.loadUserByUsername(username);
-                    auth = new UsernamePasswordAuthenticationToken(
-                            userDetails,
-                            null,authorities);
-                    SecurityContextHolder.getContext().setAuthentication(auth);
-                }
-
-        } catch (Exception e){
-            logger.error("JWT token error: {}", e);
-
-        }
-
-        filterChain.doFilter(request,response);
->>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
+        filterChain.doFilter(request, response);
     }
 }
+
