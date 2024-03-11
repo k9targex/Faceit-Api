@@ -30,6 +30,7 @@ public class TokenFilter extends OncePerRequestFilter {
     @Autowired
     public void setUserDetailsService(UserDetailsService userDetailsService) {
         this.userDetailsService=userDetailsService;
+    this.userDetailsService=userDetailsService;
     }
     @Autowired
     public void setJwtCore(JwtCore jwtCore) {
@@ -44,7 +45,7 @@ public class TokenFilter extends OncePerRequestFilter {
         UsernamePasswordAuthenticationToken auth = null;
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        if (!request.getRequestURI().equals("/auth/signin") && !request.getRequestURI().equals("/auth/signup")) {
+        if (!(request.getRequestURI().equals("/auth/signin")) && !(request.getRequestURI().equals("/auth/signup"))) {
             try {
                 String headerAuth = request.getHeader("Authorization");
                 if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
@@ -63,8 +64,8 @@ public class TokenFilter extends OncePerRequestFilter {
             } catch (Exception e) {
                 logger.error("JWT token error: {}", e);
             }
-
-            filterChain.doFilter(request, response);
         }
+        filterChain.doFilter(request, response);
     }
 }
+
