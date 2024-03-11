@@ -18,7 +18,6 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 @RequestMapping("api/v1")
 public class FaceitController {
 
-
     private final FaceitService faceitService;
     public FaceitController(FaceitService faceitService){this.faceitService = faceitService;}
 
