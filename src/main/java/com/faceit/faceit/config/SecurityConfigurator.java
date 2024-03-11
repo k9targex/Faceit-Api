@@ -22,9 +22,11 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 
-
+=======
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
 @Configuration
 @EnableWebSecurity
 @Data
@@ -44,7 +46,7 @@ public class SecurityConfigurator {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
@@ -52,10 +54,9 @@ public class SecurityConfigurator {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
     @Bean
     @Primary
-    public AuthenticationManagerBuilder configureAuthenticationManagerBuilder(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+    public AuthenticationManagerBuilder configureAuthenticationManagerBuilder(AuthenticationManagerBuilder  authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder;
     }
@@ -64,6 +65,7 @@ public class SecurityConfigurator {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+<<<<<<< HEAD
                 .cors(cors -> cors
                         .configurationSource(request -> {
                             CorsConfiguration configuration = new CorsConfiguration();
@@ -72,12 +74,21 @@ public class SecurityConfigurator {
                             configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type")); // Разрешенные заголовки
                             return configuration;
                         })
+=======
+                .cors(httpSecurityCorsConfigurer ->
+                        httpSecurityCorsConfigurer.configurationSource(request ->
+                                new CorsConfiguration().applyPermitDefaultValues())
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
                 )
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
                 .sessionManagement(session -> session
+<<<<<<< HEAD
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+=======
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**").permitAll()
@@ -87,4 +98,9 @@ public class SecurityConfigurator {
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693

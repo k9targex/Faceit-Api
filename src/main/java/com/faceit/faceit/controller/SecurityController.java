@@ -15,7 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
 @Controller
 @RequestMapping("/auth")
 public class SecurityController {
@@ -50,7 +53,11 @@ public class SecurityController {
     @PostMapping("/signup")
     public String signup(@RequestParam String username,String password){
 
+<<<<<<< HEAD
         if (userRepository.existsUserByUsername(username).booleanValue()) {
+=======
+        if (userRepository.existsUserByUsername(username)) {
+>>>>>>> 94a697e9c58e9f9683ee4a97e4c9db455707a693
             return "signupError";
         }
         User user = new User();
