@@ -1,12 +1,14 @@
 package com.faceit.faceit.service;
 
 import com.faceit.faceit.dao.CountryRepository;
-import com.faceit.faceit.dao.UserRepository;
+
 import com.faceit.faceit.entity.Country;
 import com.faceit.faceit.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -14,21 +16,17 @@ import java.util.List;
 @Transactional
 public class CountryService {
     private CountryRepository countryRepository;
-    private UserRepository userRepository;
+
     @Autowired
     public void setCountryRepository(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
     }
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
-    public List<User> getCountryUsers(String countryName) throws Exception
+    public List<User> getCountryUsers(String countryName)
     {
         if (countryRepository.findCountryByCountryName(countryName)==null)
         {
-            throw new Exception("Country doesn't exist");
+            throw new IllegalArgumentException("Country doesn't exist");
         }
         Country country = countryRepository.findCountryByCountryName(countryName);
         return country.getUsers();
@@ -36,7 +34,11 @@ public class CountryService {
     public List<Country> getCountries(){
         return countryRepository.findAll();
     }
-    public void editCountryName(String countryName,String newCountryName) throws Exception{
+    public void editCountryName(String countryName,String newCountryName) {
+        if (countryRepository.findCountryByCountryName(countryName)==null)
+        {
+            throw new IllegalArgumentException("Country doesn't exist");
+        }
         Country country= countryRepository.findCountryByCountryName(countryName);
         country.setCountryName(newCountryName);
     }
