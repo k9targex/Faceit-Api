@@ -12,14 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Component
 public class TokenFilter extends OncePerRequestFilter {
@@ -30,7 +26,6 @@ public class TokenFilter extends OncePerRequestFilter {
     @Autowired
     public void setUserDetailsService(UserDetailsService userDetailsService) {
         this.userDetailsService=userDetailsService;
-    this.userDetailsService=userDetailsService;
     }
     @Autowired
     public void setJwtCore(JwtCore jwtCore) {
@@ -43,8 +38,7 @@ public class TokenFilter extends OncePerRequestFilter {
         String username = null;
         UserDetails userDetails = null;
         UsernamePasswordAuthenticationToken auth = null;
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+
         if (!(request.getRequestURI().equals("/auth/signin")) && !(request.getRequestURI().equals("/auth/signup"))) {
             try {
                 String headerAuth = request.getHeader("Authorization");
@@ -57,7 +51,7 @@ public class TokenFilter extends OncePerRequestFilter {
                         userDetails = userDetailsService.loadUserByUsername(username);
                         auth = new UsernamePasswordAuthenticationToken(
                                 userDetails,
-                                null, authorities);
+                                null, userDetails.getAuthorities());
                         SecurityContextHolder.getContext().setAuthentication(auth);
                     }
                 }

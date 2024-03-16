@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+</head>
+<body>
+<script>
+    // Обработчик ответа от сервера после регистрации
+    function sendRequestWithToken() {
+        var Token = "[[${jwt}]]" ;
+        console.log(Token);
+        localStorage.setItem('token',Token)
+        var token = localStorage.getItem('token'); // Получение токена из локального хранилища
+        var headers = {
+            'Authorization':"Bearer " + token // Добавление токена в заголовки запроса
+        };
+        // Отправка запроса с заголовками
+        fetch('http://localhost:8080/api/v1/faceit/info?nickname=OTOKU', {
+            headers: headers,
+            method: 'GET',
+        })
+            .then(function(response) {
+                // Обработка ответа
+                return response.json();
+            })
+            .catch(function(error) {
+                // Обработка ошибки
+                console.log(Token);
+            })
+        .then(function(data) {
+            // Обработка данных
+            console.log(data);
+        })
+            .catch(function(error) {
+                // Обработка ошибки
+                console.error('There was a problem with your fetch operation:', error);
+            });
+    }
+    sendRequestWithToken();
+</script>
+
+</body>
+</html>

@@ -80,9 +80,10 @@ public class SecurityConfigurator {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
+
+                        .requestMatchers("/users/**","/country/**"). hasRole("ADMIN")
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/api/**").fullyAuthenticated()
-                        .anyRequest().permitAll()
+                        .anyRequest(). hasAnyRole("ADMIN","USER")
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

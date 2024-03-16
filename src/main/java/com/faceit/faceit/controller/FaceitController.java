@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-
 @Controller
 @RequestMapping("api/v1")
 public class FaceitController {
@@ -40,4 +39,5 @@ public class FaceitController {
             return "index";
 
     }
+
 }
