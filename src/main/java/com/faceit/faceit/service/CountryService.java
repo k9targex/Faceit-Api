@@ -2,8 +2,8 @@ package com.faceit.faceit.service;
 
 import com.faceit.faceit.dao.CountryRepository;
 
-import com.faceit.faceit.entity.Country;
-import com.faceit.faceit.entity.User;
+import com.faceit.faceit.model.entity.Country;
+import com.faceit.faceit.model.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 

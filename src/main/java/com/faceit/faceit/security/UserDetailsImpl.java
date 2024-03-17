@@ -1,5 +1,5 @@
 package com.faceit.faceit.security;
-import com.faceit.faceit.entity.User;
+import com.faceit.faceit.model.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

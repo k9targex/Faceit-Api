@@ -1,4 +1,4 @@
-package com.faceit.faceit.controller;
+package com.faceit.faceit.model.dto;
 
 import lombok.Data;
 

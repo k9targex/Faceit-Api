@@ -1,4 +1,4 @@
-package com.faceit.faceit.entity;
+package com.faceit.faceit.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

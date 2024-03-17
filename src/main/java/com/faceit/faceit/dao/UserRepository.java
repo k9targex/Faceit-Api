@@ -1,6 +1,6 @@
 package com.faceit.faceit.dao;
 
-import com.faceit.faceit.entity.User;
+import com.faceit.faceit.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
