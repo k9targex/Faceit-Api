@@ -26,5 +26,4 @@ public class Country {
     private List<User> users;
 
 
-
 }

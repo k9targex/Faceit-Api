@@ -36,13 +36,22 @@ public class CountryService {
     public List<Country> getCountries(){
         return countryRepository.findAll();
     }
+
     public void editCountryName(String countryName,String newCountryName) {
         if (countryRepository.findCountryByCountryName(countryName)==null)
         {
             throw new IllegalArgumentException("Country doesn't exist");
         }
-        Country country= countryRepository.findCountryByCountryName(countryName);
-        country.setCountryName(newCountryName);
+        Country newCountry = countryRepository.findCountryByCountryName(newCountryName);
+        if (newCountry != null) {
+            newCountry.getUsers().addAll(countryRepository.findCountryByCountryName(countryName).getUsers());
+            countryRepository.findCountryByCountryName(countryName).getUsers().forEach(user -> user.setCountry(newCountry));
+            countryRepository.save(newCountry);
+            deleteCountry(countryName);
+        } else {
+            countryRepository.findCountryByCountryName(countryName).setCountryName(newCountryName);
+        }
+
     }
     public void deleteCountry(String countryName){
         if (countryRepository.findCountryByCountryName(countryName)==null)
@@ -50,7 +59,6 @@ public class CountryService {
             throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"Страна не найдена");
         }
         else
-            if(countryRepository.findCountryByCountryName(countryName).getUsers().isEmpty())
                 countryRepository.delete(countryRepository.findCountryByCountryName(countryName));
 
     }

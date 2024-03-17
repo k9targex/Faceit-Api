@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/country")
 
+
 public class CountryController {
     private CountryService countryService;
     @Autowired
@@ -36,20 +37,10 @@ public class CountryController {
         }
     }
     @PatchMapping("/editCountryName")
-    public ResponseEntity<Object> editCountryName(@RequestParam String countryName, String newCountryName){
+    public ResponseEntity<Object> editCountryName( @RequestParam String countryName, String newCountryName){
         try {
             countryService.editCountryName(countryName,newCountryName);
             return ResponseEntity.ok().body("Succes bitch");
-        }
-        catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-    @DeleteMapping("/deleteCountry")
-    public ResponseEntity<Object> deleteEmptyCountry(@RequestParam String countryName){
-        try {
-            countryService.deleteCountry(countryName);
-            return ResponseEntity.ok().body("Ok");
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

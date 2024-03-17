@@ -80,7 +80,7 @@ public class SecurityConfigurator {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/users/addPlayer/**","/users/getPlayers/**","/users/deletePlayer/**"). hasAnyRole("ADMIN","USER")
+                        .requestMatchers("/users/addPlayer/**","/users/getPlayers/**"). hasAnyRole("ADMIN","USER")
                         .requestMatchers("/users/**","/country/**"). hasRole("ADMIN")
                         .requestMatchers("/auth/**").permitAll()
                         .anyRequest().fullyAuthenticated()

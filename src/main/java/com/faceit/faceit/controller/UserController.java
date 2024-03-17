@@ -15,7 +15,7 @@ import java.util.Set;
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService userService;
+    private UserService userService;
     private JwtCore jwtCore;
     @Autowired
     public UserController(UserService userService) {
