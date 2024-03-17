@@ -51,7 +51,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getFavoritePlayersByUsername(username));
     }
     @DeleteMapping("/deletePlayer")
-    public ResponseEntity<String> getAllPlayers(@RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
+    public ResponseEntity<String> deletePlayer(@RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
         String token = userService.getTokenFromRequest(authorizationHeader);
         String username = jwtCore.getNameFromJwt(token);
         userService.removePlayer(username,nickname);

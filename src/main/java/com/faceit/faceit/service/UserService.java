@@ -7,12 +7,10 @@ import com.faceit.faceit.dao.UserRepository;
 import com.faceit.faceit.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashSet;
@@ -50,21 +48,21 @@ public class UserService implements UserDetailsService {
         if (userOptional.isPresent()) {
             userRepository.delete(userOptional.get());
         } else {
-            throw new IllegalArgumentException("User with username " + username + " not found");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Такого пользователя нет");
         }
     }
 
 
     public Set<Player> getFavoritePlayersByUsername(String username) {
         User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("User with username " + username + " not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Пользователь не найден"));
         return user.getFavoritePlayers();
     }
 
 
     public void addPlayerToUser(String username, String nickname) {
         User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("User with username " + username + " not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Пользоваьеля не существует"));
 
         Player player = playerRepository.findPlayerByNickname(nickname)
                 .orElseGet(() -> {
@@ -85,10 +83,10 @@ public class UserService implements UserDetailsService {
 
     public void removePlayer(String username, String nickname) {
         User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("User with username " + username + " not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
         Player player = playerRepository.findPlayerByNickname(nickname)
-                .orElseThrow(() -> new IllegalArgumentException("Player with nickname " + nickname + " not found"));
+                .orElseThrow(() ->new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
         if (user != null && player != null) {
             user.getFavoritePlayers().removeIf(favoritePlayers-> favoritePlayers.getNickname().equals(nickname));

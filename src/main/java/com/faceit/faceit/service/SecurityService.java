@@ -55,7 +55,7 @@ public class SecurityService {
 
     public String register(SignUpRequest signUpRequest){
         if (userRepository.existsUserByUsername(signUpRequest.getUsername()).booleanValue()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Пользователь уже занят");
         }
         User user = new User();
         user.setUsername(signUpRequest.getUsername());
@@ -80,7 +80,7 @@ public class SecurityService {
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
         } catch (BadCredentialsException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Неправильный логин или пароль");
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return(jwtCore.generateToken(authentication));

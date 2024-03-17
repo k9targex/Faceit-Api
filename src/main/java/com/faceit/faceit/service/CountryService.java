@@ -7,7 +7,9 @@ import com.faceit.faceit.model.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.List;
@@ -42,9 +44,15 @@ public class CountryService {
         Country country= countryRepository.findCountryByCountryName(countryName);
         country.setCountryName(newCountryName);
     }
-    public void deleteCountry(String countyName){
-        Country country= countryRepository.findCountryByCountryName(countyName);
-        countryRepository.delete(country);
+    public void deleteCountry(String countryName){
+        if (countryRepository.findCountryByCountryName(countryName)==null)
+        {
+            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"Страна не найдена");
+        }
+        else
+            if(countryRepository.findCountryByCountryName(countryName).getUsers().isEmpty())
+                countryRepository.delete(countryRepository.findCountryByCountryName(countryName));
+
     }
 
 }

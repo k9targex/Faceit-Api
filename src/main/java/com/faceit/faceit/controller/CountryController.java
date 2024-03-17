@@ -46,10 +46,10 @@ public class CountryController {
         }
     }
     @DeleteMapping("/deleteCountry")
-    public ResponseEntity<Object> deleteCountry(@RequestParam String countryName){
+    public ResponseEntity<Object> deleteEmptyCountry(@RequestParam String countryName){
         try {
             countryService.deleteCountry(countryName);
-            return ResponseEntity.ok().body("Succes bitch");
+            return ResponseEntity.ok().body("Ok");
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
