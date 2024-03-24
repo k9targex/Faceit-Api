@@ -8,6 +8,8 @@ target/
 .mvnw.cmd
 src/main/resources/application.properties
 log/
+src.zip
+
 ### STS ###
 .apt_generated
 .classpath
