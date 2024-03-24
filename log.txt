@@ -1,0 +1,274 @@
+2024-03-24T16:44:30.002+03:00  INFO 2052 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 2052 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T16:44:30.003+03:00  INFO 2052 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T16:44:30.553+03:00  INFO 2052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T16:44:30.804+03:00  INFO 2052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 243 ms. Found 3 JPA repository interfaces.
+2024-03-24T16:44:31.361+03:00  INFO 2052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T16:44:31.376+03:00  INFO 2052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T16:44:31.376+03:00  INFO 2052 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T16:44:31.418+03:00  INFO 2052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T16:44:31.419+03:00  INFO 2052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1385 ms
+2024-03-24T16:44:31.543+03:00  INFO 2052 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T16:44:31.600+03:00  INFO 2052 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T16:44:31.635+03:00  INFO 2052 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T16:44:31.858+03:00  INFO 2052 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T16:44:31.883+03:00  INFO 2052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T16:44:32.076+03:00  INFO 2052 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5bb97fe7
+2024-03-24T16:44:32.077+03:00  INFO 2052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T16:44:32.143+03:00  WARN 2052 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T16:44:33.236+03:00  INFO 2052 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T16:44:33.395+03:00  INFO 2052 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T16:44:33.624+03:00  INFO 2052 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T16:44:34.163+03:00  INFO 2052 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T16:44:34.323+03:00  INFO 2052 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6dbe6891, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30be77cd, org.springframework.security.web.context.SecurityContextHolderFilter@4a23be9, org.springframework.security.web.header.HeaderWriterFilter@b768e4d, org.springframework.web.filter.CorsFilter@71c9c7f3, org.springframework.security.web.authentication.logout.LogoutFilter@6d86d1ad, com.faceit.faceit.security.TokenFilter@6921ce3f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d96b0f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f31385e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6979e9b8, org.springframework.security.web.session.SessionManagementFilter@1dc37d4f, org.springframework.security.web.access.ExceptionTranslationFilter@223e51e4, org.springframework.security.web.access.intercept.AuthorizationFilter@7f77d839]
+2024-03-24T16:44:34.575+03:00  INFO 2052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T16:44:34.582+03:00  INFO 2052 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 4.908 seconds (process running for 5.458)
+2024-03-24T16:44:43.605+03:00  INFO 2052 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-24T16:44:43.606+03:00  INFO 2052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-24T16:44:43.607+03:00  INFO 2052 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-24T16:45:59.927+03:00  INFO 2052 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T16:45:59.929+03:00  INFO 2052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T16:45:59.931+03:00  INFO 2052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T16:46:03.470+03:00  INFO 18376 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 18376 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T16:46:03.472+03:00  INFO 18376 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T16:46:03.879+03:00  INFO 18376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T16:46:03.976+03:00  INFO 18376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 3 JPA repository interfaces.
+2024-03-24T16:46:04.318+03:00  INFO 18376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T16:46:04.325+03:00  INFO 18376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T16:46:04.326+03:00  INFO 18376 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T16:46:04.365+03:00  INFO 18376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T16:46:04.365+03:00  INFO 18376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 865 ms
+2024-03-24T16:46:04.444+03:00  INFO 18376 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T16:46:04.482+03:00  INFO 18376 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T16:46:04.507+03:00  INFO 18376 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T16:46:04.668+03:00  INFO 18376 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T16:46:04.695+03:00  INFO 18376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T16:46:04.812+03:00  INFO 18376 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@708769b7
+2024-03-24T16:46:04.814+03:00  INFO 18376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T16:46:04.841+03:00  WARN 18376 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T16:46:05.555+03:00  INFO 18376 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T16:46:05.634+03:00  INFO 18376 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T16:46:05.838+03:00  INFO 18376 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T16:46:06.241+03:00  INFO 18376 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T16:46:06.340+03:00  INFO 18376 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7aa4ef24, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7f77d839, org.springframework.security.web.context.SecurityContextHolderFilter@1dc37d4f, org.springframework.security.web.header.HeaderWriterFilter@621c7b91, org.springframework.web.filter.CorsFilter@46ebd87a, org.springframework.security.web.authentication.logout.LogoutFilter@6d4f1a44, com.faceit.faceit.security.TokenFilter@2fe12ec3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2bfe398b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4a23be9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6dbe6891, org.springframework.security.web.session.SessionManagementFilter@4e739968, org.springframework.security.web.access.ExceptionTranslationFilter@1934a7c1, org.springframework.security.web.access.intercept.AuthorizationFilter@31b11287]
+2024-03-24T16:46:06.528+03:00  INFO 18376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T16:46:06.535+03:00  INFO 18376 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.355 seconds (process running for 3.75)
+2024-03-24T16:46:10.251+03:00  INFO 18376 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-24T16:46:10.252+03:00  INFO 18376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-24T16:46:10.253+03:00  INFO 18376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-24T16:47:13.280+03:00  INFO 18376 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T16:47:13.282+03:00  INFO 18376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T16:47:13.284+03:00  INFO 18376 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T16:47:15.798+03:00  INFO 16052 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 16052 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T16:47:15.800+03:00  INFO 16052 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T16:47:16.207+03:00  INFO 16052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T16:47:16.301+03:00  INFO 16052 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 3 JPA repository interfaces.
+2024-03-24T16:47:16.655+03:00  INFO 16052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T16:47:16.662+03:00  INFO 16052 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T16:47:16.663+03:00  INFO 16052 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T16:47:16.699+03:00  INFO 16052 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T16:47:16.700+03:00  INFO 16052 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 874 ms
+2024-03-24T16:47:16.783+03:00  INFO 16052 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T16:47:16.849+03:00  INFO 16052 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T16:47:16.876+03:00  INFO 16052 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T16:47:17.053+03:00  INFO 16052 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T16:47:17.073+03:00  INFO 16052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T16:47:17.194+03:00  INFO 16052 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e477944
+2024-03-24T16:47:17.195+03:00  INFO 16052 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T16:47:17.223+03:00  WARN 16052 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T16:47:17.894+03:00  INFO 16052 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T16:47:17.970+03:00  INFO 16052 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T16:47:18.129+03:00  INFO 16052 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T16:47:18.571+03:00  INFO 16052 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T16:47:18.681+03:00  INFO 16052 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3e668743, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@35b8b69f, org.springframework.security.web.context.SecurityContextHolderFilter@620ba2b0, org.springframework.security.web.header.HeaderWriterFilter@4086e003, org.springframework.web.filter.CorsFilter@6fca831e, org.springframework.security.web.authentication.logout.LogoutFilter@62e55482, com.faceit.faceit.security.TokenFilter@3448a248, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c634c0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4e739968, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3b67c637, org.springframework.security.web.session.SessionManagementFilter@301608d, org.springframework.security.web.access.ExceptionTranslationFilter@33012e6f, org.springframework.security.web.access.intercept.AuthorizationFilter@51b1732d]
+2024-03-24T16:47:18.874+03:00  INFO 16052 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T16:47:18.881+03:00  INFO 16052 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.361 seconds (process running for 3.74)
+2024-03-24T16:47:21.392+03:00  INFO 16052 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-24T16:47:21.392+03:00  INFO 16052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-24T16:47:21.393+03:00  INFO 16052 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-03-24T16:47:21.673+03:00 ERROR 16052 --- [http-nio-8080-exec-1] c.f.f.e.ControllerExceptionHandler       : Error 500: Internal server error - 401 UNAUTHORIZED "Неправильный логин или пароль"
+2024-03-24T16:50:15.019+03:00 ERROR 16052 --- [http-nio-8080-exec-2] com.faceit.faceit.security.TokenFilter   : JWT token error: {}
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired 677545018 milliseconds ago at 2024-03-16T17:37:50.000Z. Current time: 2024-03-24T13:50:15.018Z. Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:682) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:362) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:821) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:797) ~[jjwt-impl-0.12.5.jar:0.12.5]
+	at com.faceit.faceit.security.JwtCore.getNameFromJwt(JwtCore.java:26) ~[classes/:na]
+	at com.faceit.faceit.security.TokenFilter.doFilterInternal(TokenFilter.java:49) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225) ~[spring-security-config-6.2.1.jar:6.2.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.18.jar:10.1.18]
+	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
+
+2024-03-24T16:50:21.896+03:00 ERROR 16052 --- [http-nio-8080-exec-6] c.f.f.e.ControllerExceptionHandler       : Error 500: Internal server error - 400 BAD_REQUEST "Такого пользователя нет"
+2024-03-24T17:47:23.060+03:00 ERROR 16052 --- [http-nio-8080-exec-8] c.f.f.e.ControllerExceptionHandler       : Error 405: Method not supported - Request method 'GET' is not supported
+2024-03-24T17:49:26.692+03:00  INFO 16052 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:49:26.694+03:00  INFO 16052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T17:49:26.695+03:00  INFO 16052 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T17:49:29.619+03:00  INFO 18528 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 18528 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T17:49:29.620+03:00  INFO 18528 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T17:49:30.021+03:00  INFO 18528 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T17:49:30.117+03:00  INFO 18528 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 3 JPA repository interfaces.
+2024-03-24T17:49:30.442+03:00  INFO 18528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T17:49:30.449+03:00  INFO 18528 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T17:49:30.449+03:00  INFO 18528 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T17:49:30.487+03:00  INFO 18528 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T17:49:30.487+03:00  INFO 18528 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 842 ms
+2024-03-24T17:49:30.567+03:00  INFO 18528 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T17:49:30.604+03:00  INFO 18528 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T17:49:30.628+03:00  INFO 18528 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T17:49:30.789+03:00  INFO 18528 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T17:49:30.808+03:00  INFO 18528 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T17:49:30.920+03:00  INFO 18528 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@135e49b2
+2024-03-24T17:49:30.921+03:00  INFO 18528 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T17:49:30.947+03:00  WARN 18528 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T17:49:31.604+03:00  INFO 18528 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T17:49:31.677+03:00  INFO 18528 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:49:31.819+03:00  INFO 18528 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T17:49:32.266+03:00  INFO 18528 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T17:49:32.373+03:00  INFO 18528 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46ebd87a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6dbe6891, org.springframework.security.web.context.SecurityContextHolderFilter@2bfe398b, org.springframework.security.web.header.HeaderWriterFilter@1e08f0cd, org.springframework.web.filter.CorsFilter@30be77cd, org.springframework.security.web.authentication.logout.LogoutFilter@6deb2b19, com.faceit.faceit.security.TokenFilter@3e2a8fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20d1737, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d96b0f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71c9c7f3, org.springframework.security.web.session.SessionManagementFilter@2e903c69, org.springframework.security.web.access.ExceptionTranslationFilter@621c7b91, org.springframework.security.web.access.intercept.AuthorizationFilter@7aa4ef24]
+2024-03-24T17:49:32.567+03:00  INFO 18528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T17:49:32.575+03:00  INFO 18528 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.2 seconds (process running for 3.565)
+2024-03-24T17:50:50.931+03:00  INFO 18528 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:50:50.932+03:00  INFO 18528 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T17:50:50.934+03:00  INFO 18528 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T17:50:52.480+03:00  INFO 15444 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 15444 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T17:50:52.481+03:00  INFO 15444 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T17:50:52.901+03:00  INFO 15444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T17:50:53.000+03:00  INFO 15444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 3 JPA repository interfaces.
+2024-03-24T17:50:53.351+03:00  INFO 15444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T17:50:53.359+03:00  INFO 15444 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T17:50:53.360+03:00  INFO 15444 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T17:50:53.399+03:00  INFO 15444 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T17:50:53.400+03:00  INFO 15444 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 889 ms
+2024-03-24T17:50:53.487+03:00  INFO 15444 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T17:50:53.523+03:00  INFO 15444 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T17:50:53.555+03:00  INFO 15444 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T17:50:53.723+03:00  INFO 15444 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T17:50:53.741+03:00  INFO 15444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T17:50:53.858+03:00  INFO 15444 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@63262071
+2024-03-24T17:50:53.859+03:00  INFO 15444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T17:50:53.883+03:00  WARN 15444 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T17:50:54.568+03:00  INFO 15444 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T17:50:54.640+03:00  INFO 15444 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:50:54.790+03:00  INFO 15444 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T17:50:55.200+03:00  INFO 15444 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T17:50:55.301+03:00  INFO 15444 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71c9c7f3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6979e9b8, org.springframework.security.web.context.SecurityContextHolderFilter@5d96b0f, org.springframework.security.web.header.HeaderWriterFilter@5ad67d82, org.springframework.web.filter.CorsFilter@771deee6, org.springframework.security.web.authentication.logout.LogoutFilter@51b1732d, com.faceit.faceit.security.TokenFilter@7b0a69b9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a592d22, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@20072ff1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@345effd7, org.springframework.security.web.session.SessionManagementFilter@2bfe398b, org.springframework.security.web.access.ExceptionTranslationFilter@b768e4d, org.springframework.security.web.access.intercept.AuthorizationFilter@6dbe6891]
+2024-03-24T17:50:55.496+03:00  INFO 15444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T17:50:55.502+03:00  INFO 15444 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.305 seconds (process running for 3.676)
+2024-03-24T17:51:33.931+03:00  INFO 15444 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:51:33.932+03:00  INFO 15444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T17:51:33.933+03:00  INFO 15444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T17:51:35.468+03:00  INFO 9048 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 9048 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T17:51:35.470+03:00  INFO 9048 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T17:51:35.885+03:00  INFO 9048 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T17:51:35.980+03:00  INFO 9048 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 3 JPA repository interfaces.
+2024-03-24T17:51:36.309+03:00  INFO 9048 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T17:51:36.317+03:00  INFO 9048 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T17:51:36.317+03:00  INFO 9048 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T17:51:36.355+03:00  INFO 9048 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T17:51:36.356+03:00  INFO 9048 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 859 ms
+2024-03-24T17:51:36.438+03:00  INFO 9048 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T17:51:36.473+03:00  INFO 9048 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T17:51:36.502+03:00  INFO 9048 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T17:51:36.669+03:00  INFO 9048 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T17:51:36.687+03:00  INFO 9048 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T17:51:36.803+03:00  INFO 9048 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@135e49b2
+2024-03-24T17:51:36.804+03:00  INFO 9048 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T17:51:36.831+03:00  WARN 9048 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T17:51:37.516+03:00  INFO 9048 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T17:51:37.590+03:00  INFO 9048 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:51:37.739+03:00  INFO 9048 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T17:51:38.170+03:00  INFO 9048 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T17:51:38.272+03:00  INFO 9048 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46ebd87a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6dbe6891, org.springframework.security.web.context.SecurityContextHolderFilter@2bfe398b, org.springframework.security.web.header.HeaderWriterFilter@1e08f0cd, org.springframework.web.filter.CorsFilter@30be77cd, org.springframework.security.web.authentication.logout.LogoutFilter@6deb2b19, com.faceit.faceit.security.TokenFilter@3e2a8fc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20d1737, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d96b0f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71c9c7f3, org.springframework.security.web.session.SessionManagementFilter@2e903c69, org.springframework.security.web.access.ExceptionTranslationFilter@621c7b91, org.springframework.security.web.access.intercept.AuthorizationFilter@7aa4ef24]
+2024-03-24T17:51:38.464+03:00  INFO 9048 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T17:51:38.471+03:00  INFO 9048 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.292 seconds (process running for 3.661)
+2024-03-24T17:56:50.162+03:00  INFO 9048 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:56:50.163+03:00  INFO 9048 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T17:56:50.165+03:00  INFO 9048 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-03-24T17:58:10.973+03:00  INFO 2172 --- [main] com.faceit.faceit.FaceitApplication      : Starting FaceitApplication using Java 17.0.10 with PID 2172 (C:\JavaLabs\Faceit\FaceitApi\target\classes started by msi in C:\JavaLabs\Faceit\FaceitApi)
+2024-03-24T17:58:10.975+03:00  INFO 2172 --- [main] com.faceit.faceit.FaceitApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-03-24T17:58:11.458+03:00  INFO 2172 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T17:58:11.552+03:00  INFO 2172 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 3 JPA repository interfaces.
+2024-03-24T17:58:11.905+03:00  INFO 2172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T17:58:11.913+03:00  INFO 2172 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T17:58:11.913+03:00  INFO 2172 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T17:58:11.951+03:00  INFO 2172 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T17:58:11.951+03:00  INFO 2172 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 947 ms
+2024-03-24T17:58:12.037+03:00  INFO 2172 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T17:58:12.074+03:00  INFO 2172 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T17:58:12.099+03:00  INFO 2172 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T17:58:12.270+03:00  INFO 2172 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T17:58:12.290+03:00  INFO 2172 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T17:58:12.409+03:00  INFO 2172 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3eb9c575
+2024-03-24T17:58:12.410+03:00  INFO 2172 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T17:58:12.435+03:00  WARN 2172 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T17:58:13.084+03:00  INFO 2172 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T17:58:13.155+03:00  INFO 2172 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:58:13.343+03:00  INFO 2172 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T17:58:13.728+03:00  INFO 2172 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-03-24T17:58:13.838+03:00  INFO 2172 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@51b1732d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65b639e1, org.springframework.security.web.context.SecurityContextHolderFilter@3c3a8246, org.springframework.security.web.header.HeaderWriterFilter@33012e6f, org.springframework.web.filter.CorsFilter@3e668743, org.springframework.security.web.authentication.logout.LogoutFilter@2f4b2ee3, com.faceit.faceit.security.TokenFilter@54d0d561, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@620ba2b0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6a06b374, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35b8b69f, org.springframework.security.web.session.SessionManagementFilter@ab7ac41, org.springframework.security.web.access.ExceptionTranslationFilter@681ba763, org.springframework.security.web.access.intercept.AuthorizationFilter@6d86d1ad]
+2024-03-24T17:58:14.035+03:00  INFO 2172 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T17:58:14.043+03:00  INFO 2172 --- [main] com.faceit.faceit.FaceitApplication      : Started FaceitApplication in 3.361 seconds (process running for 3.738)
+2024-03-24T17:58:21.995+03:00  INFO 2172 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T17:58:21.996+03:00  INFO 2172 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T17:58:21.998+03:00  INFO 2172 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

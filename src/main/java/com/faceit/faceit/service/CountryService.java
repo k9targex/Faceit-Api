@@ -1,66 +1,60 @@
 package com.faceit.faceit.service;
 
 import com.faceit.faceit.dao.CountryRepository;
-
+import com.faceit.faceit.exception.CountryNotFoundException;
 import com.faceit.faceit.model.entity.Country;
 import com.faceit.faceit.model.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
 
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Service
 @Transactional
 public class CountryService {
     private CountryRepository countryRepository;
-
+    private static final String COUNTRY_NOT_FOUND_MESSAGE = "Country \"%s\" doesn't exist";
     @Autowired
     public void setCountryRepository(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
     }
 
-    public List<User> getCountryUsers(String countryName)
-    {
-        if (countryRepository.findCountryByCountryName(countryName)==null)
-        {
-            throw new IllegalArgumentException("Country doesn't exist");
-        }
-        Country country = countryRepository.findCountryByCountryName(countryName);
-        return country.getUsers();
+    public List<User> getCountryUsers(String countryName)  {
+
+            Country country = countryRepository.findCountryByCountryName(countryName).
+                    orElseThrow(() -> new CountryNotFoundException(String.format(COUNTRY_NOT_FOUND_MESSAGE,countryName)));
+            return country.getUsers();
     }
     public List<Country> getCountries(){
         return countryRepository.findAll();
     }
 
-    public void editCountryName(String countryName,String newCountryName) {
-        if (countryRepository.findCountryByCountryName(countryName)==null)
-        {
-            throw new IllegalArgumentException("Country doesn't exist");
-        }
-        Country newCountry = countryRepository.findCountryByCountryName(newCountryName);
-        if (newCountry != null) {
-            newCountry.getUsers().addAll(countryRepository.findCountryByCountryName(countryName).getUsers());
-            countryRepository.findCountryByCountryName(countryName).getUsers().forEach(user -> user.setCountry(newCountry));
+    public void editCountryName(String countryName,String newCountryName)  {
+        Country currentCountry = countryRepository.findCountryByCountryName(countryName)
+                .orElseThrow(() -> new CountryNotFoundException(String.format(COUNTRY_NOT_FOUND_MESSAGE, countryName)));
+
+        Optional<Country> newCountryOptional = countryRepository.findCountryByCountryName(newCountryName);
+        if (newCountryOptional.isPresent()) {
+            Country newCountry = newCountryOptional.get();
+            newCountry.getUsers().addAll(currentCountry.getUsers());
+            currentCountry.getUsers().forEach(user -> user.setCountry(newCountry));
             countryRepository.save(newCountry);
             deleteCountry(countryName);
         } else {
-            countryRepository.findCountryByCountryName(countryName).setCountryName(newCountryName);
+            currentCountry.setCountryName(newCountryName);
+            countryRepository.save(currentCountry);
         }
-
     }
-    public void deleteCountry(String countryName){
-        if (countryRepository.findCountryByCountryName(countryName)==null)
-        {
-            throw new  ResponseStatusException(HttpStatus.BAD_REQUEST,"Страна не найдена");
-        }
-        else
-                countryRepository.delete(countryRepository.findCountryByCountryName(countryName));
+    public void deleteCountry(String countryName)  {
 
+        countryRepository.delete(countryRepository.findCountryByCountryName(countryName).
+                orElseThrow(() -> new CountryNotFoundException(String.format(COUNTRY_NOT_FOUND_MESSAGE,countryName))));
     }
 
 }

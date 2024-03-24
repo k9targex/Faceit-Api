@@ -2,6 +2,7 @@ package com.faceit.faceit.service;
 
 import com.faceit.faceit.dao.CountryRepository;
 import com.faceit.faceit.dao.UserRepository;
+import com.faceit.faceit.exception.UnauthorizedException;
 import com.faceit.faceit.model.dto.*;
 
 import com.faceit.faceit.model.entity.Country;
@@ -20,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
 
 @Service
 @Transactional
@@ -55,17 +57,17 @@ public class SecurityService {
 
     public String register(SignUpRequest signUpRequest){
         if (userRepository.existsUserByUsername(signUpRequest.getUsername()).booleanValue()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Пользователь уже занят");
+            throw new UnauthorizedException(String.format("Имя \"%s\" уже занято (((", signUpRequest.getUsername()));
         }
         User user = new User();
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-        Country country = countryRepository.findCountryByCountryName(signUpRequest.getCountry());
-        if (country == null) {
-            country = new Country();
-            country.setCountryName(signUpRequest.getCountry());
-            countryRepository.save(country);
-        }
+        Country country = countryRepository.findCountryByCountryName(signUpRequest.getCountry())
+             .orElseGet(() -> {
+                 Country newCountry = new Country();
+                 newCountry.setCountryName(signUpRequest.getCountry());
+                 return countryRepository.save(newCountry);
+        });
         user.setCountry(country);
         user.setRole("ROLE_USER");
         userRepository.save(user);
@@ -80,7 +82,7 @@ public class SecurityService {
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword()));
         } catch (BadCredentialsException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Неправильный логин или пароль");
+            throw new UnauthorizedException("Неправильное имя пользователя или пароль");
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return(jwtCore.generateToken(authentication));

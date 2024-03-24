@@ -1,5 +1,6 @@
 package com.faceit.faceit.security;
 
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,7 +22,6 @@ import java.io.IOException;
 public class TokenFilter extends OncePerRequestFilter {
     private JwtCore jwtCore;
     private UserDetailsService userDetailsService;
-
 
     @Autowired
     public void setUserDetailsService(UserDetailsService userDetailsService) {
@@ -56,7 +56,7 @@ public class TokenFilter extends OncePerRequestFilter {
                     }
                 }
             } catch (Exception e) {
-                logger.error("JWT token error: {}", e);
+                logger.error(String.format("JWT token error: %s",e));
             }
         }
         filterChain.doFilter(request, response);

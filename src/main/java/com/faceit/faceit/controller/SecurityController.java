@@ -6,15 +6,13 @@ import com.faceit.faceit.model.dto.SignInRequest;
 import com.faceit.faceit.model.dto.SignUpRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.faceit.faceit.service.SecurityService;
 
 
 
-@Controller
+@RestController
 @RequestMapping("/auth")
 public class SecurityController {
     private SecurityService securityService;
@@ -25,24 +23,13 @@ public class SecurityController {
 
     @PostMapping("/signup")
     ResponseEntity<String> signup(@RequestBody SignUpRequest signUpRequest) {
-
-        try {
-            return ResponseEntity.ok(securityService.register(signUpRequest));
-        }
-        catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
+        return ResponseEntity.ok(securityService.register(signUpRequest));
     }
 
 
     @PostMapping("/signin")
     ResponseEntity<String> signin(@RequestBody SignInRequest signInRequest) {
-        try{
-            return ResponseEntity.ok(securityService.login(signInRequest));
-        }
-        catch (Exception e){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-        }
+        return ResponseEntity.ok(securityService.login(signInRequest));
     }
     @PatchMapping("/editPassword")
     public ResponseEntity<String> editPassword(@RequestBody PasswordRequest passwordRequest, HttpServletRequest request) {

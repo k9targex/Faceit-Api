@@ -30,7 +30,7 @@ public class User {
     private Country country;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "user_players",
             joinColumns = @JoinColumn(name = "user_id"),

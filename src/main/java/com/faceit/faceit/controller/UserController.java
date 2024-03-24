@@ -36,13 +36,20 @@ public class UserController {
         userService.deleteUser(username);
         return  ResponseEntity.ok("User was successfully deleted");
     }
+    @GetMapping("/getUsersByPlayer")
+    public ResponseEntity<List<User>> getUsersByPlayer(@RequestParam String nickname) {
+        return new ResponseEntity<>(userService.getUsersByPlayer(nickname), HttpStatus.OK);
+    }
+    @GetMapping("/getUserByName")
+    public ResponseEntity<User> getUsersByName(@RequestParam String username) {
+        return new ResponseEntity<>(userService.getUserByName(username), HttpStatus.OK);
+    }
 
     @PostMapping("/addPlayer")
     public ResponseEntity<String> addPlayerToUser(@RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
         String token = userService.getTokenFromRequest(authorizationHeader);
         String username = jwtCore.getNameFromJwt(token);
-        userService.addPlayerToUser(username, nickname);
-        return  ResponseEntity.ok("Player was successfully added");
+        return  ResponseEntity.ok(userService.addPlayerToUser(username, nickname));
     }
     @GetMapping("/getPlayers")
     public ResponseEntity<Set<Player>> getAllPlayers(@RequestHeader("Authorization") String authorizationHeader) {
@@ -55,6 +62,8 @@ public class UserController {
         String token = userService.getTokenFromRequest(authorizationHeader);
         String username = jwtCore.getNameFromJwt(token);
         userService.removePlayer(username,nickname);
-        return ResponseEntity.ok("City was successfully deleted");
+        return ResponseEntity.ok("Player was successfully deleted");
     }
+
+
 }

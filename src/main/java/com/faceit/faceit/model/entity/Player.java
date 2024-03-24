@@ -20,7 +20,7 @@ public class Player {
 
     private String nickname;
     @JsonIgnore
-    @ManyToMany(mappedBy = "favoritePlayers")
+    @ManyToMany(mappedBy = "favoritePlayers",cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
     private Set<User> subUsers = new HashSet<>();
 
 }

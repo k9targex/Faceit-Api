@@ -38,6 +38,7 @@ public class FaceitController {
             model.addAttribute("playerInfoAndStats", playerInfoAndStats);
             return "index";
 
+
     }
 
 }
