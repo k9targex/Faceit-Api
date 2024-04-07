@@ -1,4 +1,5 @@
 package com.faceit.faceit.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerInfo {
-    @JsonProperty("items")
-    private ArrayList<PlayerItem> items;
+  @JsonProperty("items")
+  private ArrayList<PlayerItem> items;
 }

@@ -21,124 +21,161 @@ import java.util.*;
 @Service
 @Transactional
 public class UserService implements UserDetailsService {
-    private UserRepository userRepository;
-    private PlayerRepository playerRepository;
-    private UserCache userCache;
-    private static final String USER_NOT_FOUND_MESSAGE = "Пользователя с именем \"%s\" не существует";
-    private static final String PLAYER_NOT_FOUND_MESSAGE = "Игрока с ником \"%s\" не существует";
+  private static final String USER_NOT_FOUND_MESSAGE = "Пользователя с именем \"%s\" не существует";
+  private static final String PLAYER_NOT_FOUND_MESSAGE = "Игрока с ником \"%s\" не существует";
+  private final UserRepository userRepository;
+  private PlayerRepository playerRepository;
+  private UserCache userCache;
 
-    @Autowired
-    public void setPlayerRepository(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
-    }
-    @Autowired
-    public void setUserCache(UserCache userCache) {
-        this.userCache = userCache;
-    }
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+  @Autowired
+  public UserService(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user=userRepository.findUserByUsername(username).orElseThrow(()->new UsernameNotFoundException(
-                String.format("User '%s' not found",username)));
-        return UserDetailsImpl.build(user);
-    }
-    public User getUserByName(String username)throws UsernameNotFoundException {
-        User cachedUser = userCache.get(username);
-        if (cachedUser != null) {
-            return cachedUser;
-        } else {
-            User user = userRepository.findUserByUsername(username)
-                    .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
-            userCache.put(username, user);
-            return user;
-        }
-    }
-    public void  saveUser(User user){
-        userRepository.save(user);
-        userCache.put(user.getUsername(), user);
-    }
+  @Autowired
+  public void setPlayerRepository(PlayerRepository playerRepository) {
+    this.playerRepository = playerRepository;
+  }
 
-    public void deleteUser(User user) {
-        userRepository.delete(user);
-        userCache.remove(user.getUsername());
+  @Autowired
+  public void setUserCache(UserCache userCache) {
+    this.userCache = userCache;
+  }
+
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format("User '%s' not found", username)));
+    return UserDetailsImpl.build(user);
+  }
+
+  public User getUserByName(String username) throws UsernameNotFoundException {
+    User cachedUser = userCache.get(username);
+    if (cachedUser != null) {
+      return cachedUser;
+    } else {
+      User user =
+          userRepository
+              .findUserByUsername(username)
+              .orElseThrow(
+                  () ->
+                      new UsernameNotFoundException(
+                          String.format(USER_NOT_FOUND_MESSAGE, username)));
+      userCache.put(username, user);
+      return user;
     }
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+  }
 
-    public List<User> getUsersByPlayer(String nickname) {
-        return userRepository.findUsersByFavoritePlayer(nickname)
-                .filter(users -> !users.isEmpty())
-                .orElseThrow(() -> new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE, nickname)));
-    }
-    public void deleteUser(String username) {
-        User userOptional = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE,username)));
-            deleteUser(userOptional);
-    }
+  public void saveUser(User user) {
+    userRepository.save(user);
+    userCache.put(user.getUsername(), user);
+  }
 
+  public void deleteUser(User user) {
+    userRepository.delete(user);
+    userCache.remove(user.getUsername());
+  }
 
-    public Set<Player> getFavoritePlayersByUsername(String username) {
-        User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE,username)));
-        return user.getFavoritePlayers();
-    }
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
+  }
 
+  public List<User> getUsersByPlayer(String nickname) {
+    return userRepository
+        .findUsersByFavoritePlayer(nickname)
+        .filter(users -> !users.isEmpty())
+        .orElseThrow(
+            () -> new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE, nickname)));
+  }
 
-    public String addPlayerToUser(String username, String nickname) {
-        User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new  UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE,username)));
+  public void deleteUser(String username) {
+    User userOptional =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+    deleteUser(userOptional);
+  }
 
-        Player player = playerRepository.findPlayerByNickname(nickname)
-                .orElseGet(() -> {
-                    Player newPlayer = new Player();
-                    newPlayer.setNickname(nickname);
-                    return playerRepository.save(newPlayer);
+  public Set<Player> getFavoritePlayersByUsername(String username) {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+    return user.getFavoritePlayers();
+  }
+
+  public String addPlayerToUser(String username, String nickname) {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+
+    Player player =
+        playerRepository
+            .findPlayerByNickname(nickname)
+            .orElseGet(
+                () -> {
+                  Player newPlayer = new Player();
+                  newPlayer.setNickname(nickname);
+                  return playerRepository.save(newPlayer);
                 });
 
-        Set<Player> favoritePlayers = user.getFavoritePlayers();
-        if (favoritePlayers == null) {
-            favoritePlayers = new HashSet<>();
-        }else {
-            if (favoritePlayers.contains(player)) {
-                return "Игрок уже добавлен";
-            }
-        }
-        favoritePlayers.add(player);
-        user.setFavoritePlayers(favoritePlayers);
-        saveUser(user);
-        return "Игрок был успешно добавлен";
+    Set<Player> favoritePlayers = user.getFavoritePlayers();
+    if (favoritePlayers == null) {
+      favoritePlayers = new HashSet<>();
+    } else {
+      if (favoritePlayers.contains(player)) {
+        return "Игрок уже добавлен";
+      }
     }
+    favoritePlayers.add(player);
+    user.setFavoritePlayers(favoritePlayers);
+    saveUser(user);
+    return "Игрок был успешно добавлен";
+  }
 
-    public void removePlayer(String username, String nickname) {
-        User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new  UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE,username)));
+  public void removePlayer(String username, String nickname) {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
 
-        Player player = playerRepository.findPlayerByNickname(nickname)
-                .orElseThrow(() ->new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE,nickname)));
+    Player player =
+        playerRepository
+            .findPlayerByNickname(nickname)
+            .orElseThrow(
+                () ->
+                    new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE, nickname)));
 
-        user.getFavoritePlayers().removeIf(favoritePlayers-> favoritePlayers.getNickname().equals(nickname));
-        saveUser(user);
-        player.getSubUsers().removeIf(savedUser -> savedUser.getUsername().equals(username));
-        playerRepository.save(player);
-        if(player.getSubUsers().isEmpty())
-        {
-            playerRepository.delete(player);
-        }
-
+    user.getFavoritePlayers()
+        .removeIf(favoritePlayers -> favoritePlayers.getNickname().equals(nickname));
+    saveUser(user);
+    player.getSubUsers().removeIf(savedUser -> savedUser.getUsername().equals(username));
+    playerRepository.save(player);
+    if (player.getSubUsers().isEmpty()) {
+      playerRepository.delete(player);
     }
-    public String getTokenFromRequest(String authorizationHeader){
-        String token;
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            token = authorizationHeader.substring(7);
-        } else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
-        return token;
-    }
+  }
 
+  public String getTokenFromRequest(String authorizationHeader) {
+    String token;
+    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+      token = authorizationHeader.substring(7);
+    } else {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
+    return token;
+  }
 }
