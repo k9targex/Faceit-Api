@@ -8,23 +8,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class PointcutDefinitions {
   @Pointcut("execution(* com.faceit.faceit.controller.SecurityController.signup(..))")
-  public void signupPointcut() {}
+  public void signupPointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.controller.SecurityController.signin(..))")
-  public void signinPointcut() {}
+  public void signinPointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.service.SecurityService.changePas(..))")
-  public void editPasswordPointcut() {}
+  public void editPasswordPointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.service.UserService.addPlayerToUser(..))")
-  public void addPlayerPointcut() {}
+  public void addPlayerPointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.service.UserService.removePlayer(..))")
-  public void removePlayerPointcut() {}
+  public void removePlayerPointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.service.CountryService.editCountryName(..))")
-  public void editCountryNamePointcut() {}
+  public void editCountryNamePointcut() { }
 
   @Pointcut("execution(* com.faceit.faceit.service.UserService.deleteUser(..))")
-  public void deleteUserPointcut() {}
+  public void deleteUserPointcut() { }
 }

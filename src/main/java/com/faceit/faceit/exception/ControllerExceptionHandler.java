@@ -15,16 +15,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+/** Обработчик исключений для контроллеров. */
 @RestControllerAdvice
 @Slf4j
 public class ControllerExceptionHandler {
 
+  /** Обработчик исключения InsufficientAuthenticationException. */
   @ExceptionHandler({InsufficientAuthenticationException.class})
   @ResponseStatus(HttpStatus.UNAUTHORIZED)
   public ResponseError handleInsufflicientException(Exception ex, WebRequest request) {
     return new ResponseError(HttpStatus.UNAUTHORIZED, ex.getMessage());
   }
 
+  /**
+   * Обработчик исключения UnauthorizedException, BadCredentialsException, MalformedJwtException,
+   * ExpiredJwtException.
+   */
   @ExceptionHandler({
     UnauthorizedException.class,
     BadCredentialsException.class,
@@ -38,6 +44,7 @@ public class ControllerExceptionHandler {
     return new ResponseError(HttpStatus.UNAUTHORIZED, ex.getMessage());
   }
 
+  /** Обработчик исключения MissingServletRequestParameterException. */
   @ExceptionHandler(MissingServletRequestParameterException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseError handleIllegalArgumentException(
@@ -47,6 +54,7 @@ public class ControllerExceptionHandler {
     return new ResponseError(HttpStatus.BAD_REQUEST, ex.getMessage());
   }
 
+  /** Обработчик исключения HttpRequestMethodNotSupportedException. */
   @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
   @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
   public ResponseError handleMethodNotSupportedException(
@@ -56,6 +64,7 @@ public class ControllerExceptionHandler {
     return new ResponseError(HttpStatus.METHOD_NOT_ALLOWED, ex.getMessage());
   }
 
+  /** Обработчик исключения RuntimeException. */
   @ExceptionHandler({RuntimeException.class})
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ResponseError handleAllExceptions(RuntimeException ex, WebRequest request) {
@@ -64,6 +73,10 @@ public class ControllerExceptionHandler {
     return new ResponseError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
   }
 
+  /**
+   * Обработчик исключений UsernameNotFoundException, CountryNotFoundException,
+   * PlayerNotFoundException.
+   */
   @ExceptionHandler({
     UsernameNotFoundException.class,
     CountryNotFoundException.class,

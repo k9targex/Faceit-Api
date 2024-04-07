@@ -9,7 +9,7 @@ target/
 src/main/resources/application.properties
 log/
 src.zip
-
+src/main/resources/checkstyle.xml
 ### STS ###
 .apt_generated
 .classpath

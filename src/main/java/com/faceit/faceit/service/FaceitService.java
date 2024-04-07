@@ -49,10 +49,11 @@ public class FaceitService {
       playerInfoAndStats.setPlayerStats(responseById);
 
       return playerInfoAndStats;
-    } else
+    } else {
       throw new WebClientResponseException(
           HttpStatus.NOT_FOUND.value(), "Player not found", null, null, null);
+    }
   }
 
-  private FaceitService() {}
+  private FaceitService() { }
 }

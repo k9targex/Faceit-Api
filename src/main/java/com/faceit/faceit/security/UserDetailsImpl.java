@@ -1,13 +1,17 @@
 package com.faceit.faceit.security;
 
 import com.faceit.faceit.model.entity.User;
+import java.util.Collection;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
 
+
+/**
+ * Реализация интерфейса UserDetails для аутентификации пользователей.
+ */
 @Data
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
@@ -16,9 +20,15 @@ public class UserDetailsImpl implements UserDetails {
   private String username;
   private String role;
 
+  /**
+   * Создание UserDetailsImpl на основе пользователя.
+   *
+   * @param user Пользователь
+   * @return UserDetailsImpl
+   */
   public static UserDetailsImpl build(User user) {
     return new UserDetailsImpl(
-        user.getId(), user.getPassword(), user.getUsername(), user.getRole());
+            user.getId(), user.getPassword(), user.getUsername(), user.getRole());
   }
 
   @Override

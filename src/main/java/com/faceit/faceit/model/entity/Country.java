@@ -1,18 +1,23 @@
 package com.faceit.faceit.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-/**
- * Этот класс представляет собой сущность страны.
- */
+/** Этот класс представляет собой сущность страны. */
 @Entity
 @Table(name = "countries")
 @Getter
@@ -30,9 +35,9 @@ public class Country {
   private String countryName;
 
   @OneToMany(
-          mappedBy = "country",
-          fetch = FetchType.EAGER,
-          cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+      mappedBy = "country",
+      fetch = FetchType.EAGER,
+      cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
   @JsonIgnore
   private List<User> users;
 }
