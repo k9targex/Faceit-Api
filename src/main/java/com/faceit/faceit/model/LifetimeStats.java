@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-
 import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Data

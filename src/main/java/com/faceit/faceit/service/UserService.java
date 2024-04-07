@@ -135,13 +135,13 @@ public class UserService implements UserDetailsService {
       favoritePlayers = new HashSet<>();
     } else {
       if (favoritePlayers.contains(player)) {
-        return "Игрок уже добавлен";
+        return String.format("Игрок с ником %s был добавлен пользователю ранее ", nickname);
       }
     }
     favoritePlayers.add(player);
     user.setFavoritePlayers(favoritePlayers);
     saveUser(user);
-    return "Игрок был успешно добавлен";
+    return String.format("Игрок с ником %s был успешно добавлен", nickname);
   }
 
   public void removePlayer(String username, String nickname) {

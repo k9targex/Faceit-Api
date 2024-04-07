@@ -1,58 +1,67 @@
 package com.faceit.faceit.exception;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.faceit.faceit.model.dto.ResponseError;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
+@Slf4j
 public class ControllerExceptionHandler {
-  private static final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
-  @ExceptionHandler(UnauthorizedException.class)
-  public ResponseEntity<Object> handleUnauthorizedException(
-      UnauthorizedException ex, WebRequest request) {
+  @ExceptionHandler({InsufficientAuthenticationException.class})
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  public ResponseError handleInsufflicientException(Exception ex, WebRequest request) {
+    return new ResponseError(HttpStatus.UNAUTHORIZED, ex.getMessage());
+  }
+
+  @ExceptionHandler({
+    UnauthorizedException.class,
+    BadCredentialsException.class,
+    MalformedJwtException.class,
+    ExpiredJwtException.class
+  })
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  public ResponseError handleUnauthorizedException(Exception ex, WebRequest request) {
     String errorMessage = "Error 401: Unauthorized - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
+    log.error(errorMessage);
+    return new ResponseError(HttpStatus.UNAUTHORIZED, ex.getMessage());
   }
 
   @ExceptionHandler(MissingServletRequestParameterException.class)
-  public ResponseEntity<Object> handleIllegalArgumentException(
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ResponseError handleIllegalArgumentException(
       MissingServletRequestParameterException ex, WebRequest request) {
     String errorMessage = "Error 400: Bad request - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-  }
-
-  @ExceptionHandler({NoResourceFoundException.class})
-  public ResponseEntity<Object> handleNoResourceFoundException(
-      NoResourceFoundException ex, WebRequest request) {
-    String errorMessage = "Error 404: Not Found - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    log.error(errorMessage);
+    return new ResponseError(HttpStatus.BAD_REQUEST, ex.getMessage());
   }
 
   @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
-  public ResponseEntity<Object> handleMethodNotSupportedException(
+  @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+  public ResponseError handleMethodNotSupportedException(
       HttpRequestMethodNotSupportedException ex, WebRequest request) {
     String errorMessage = "Error 405: Method not supported - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(ex.getMessage());
+    log.error(errorMessage);
+    return new ResponseError(HttpStatus.METHOD_NOT_ALLOWED, ex.getMessage());
   }
 
   @ExceptionHandler({RuntimeException.class})
-  public ResponseEntity<Object> handleAllExceptions(RuntimeException ex, WebRequest request) {
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public ResponseError handleAllExceptions(RuntimeException ex, WebRequest request) {
     String errorMessage = "Error 500: Internal server error - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.getMessage());
+    log.error(errorMessage);
+    return new ResponseError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
   }
 
   @ExceptionHandler({
@@ -60,9 +69,10 @@ public class ControllerExceptionHandler {
     CountryNotFoundException.class,
     PlayerNotFoundException.class
   })
-  public ResponseEntity<Object> usernameNotFoundException(RuntimeException ex, WebRequest request) {
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ResponseError usernameNotFoundException(RuntimeException ex, WebRequest request) {
     String errorMessage = "Error 404: Not Found - " + ex.getMessage();
-    logger.error(errorMessage);
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    log.error(errorMessage);
+    return new ResponseError(HttpStatus.NOT_FOUND, ex.getMessage());
   }
 }

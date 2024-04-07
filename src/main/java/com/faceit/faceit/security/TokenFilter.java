@@ -4,6 +4,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,10 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import java.io.IOException;
 
 @Component
+@Slf4j
 public class TokenFilter extends OncePerRequestFilter {
   private JwtCore jwtCore;
   private UserDetailsService userDetailsService;
@@ -40,12 +41,10 @@ public class TokenFilter extends OncePerRequestFilter {
 
     if (!(request.getRequestURI().equals("/auth/signin"))
         && !(request.getRequestURI().equals("/auth/signup"))) {
-      try {
-        String headerAuth = request.getHeader("Authorization");
-        if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
-          jwt = headerAuth.substring(7);
-        }
-        if (jwt != null) {
+      String headerAuth = request.getHeader("Authorization");
+      if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
+        jwt = headerAuth.substring(7);
+        try {
           username = jwtCore.getNameFromJwt(jwt);
           if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             userDetails = userDetailsService.loadUserByUsername(username);
@@ -54,9 +53,9 @@ public class TokenFilter extends OncePerRequestFilter {
                     userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(auth);
           }
+        } catch (Exception e) {
+          log.error("Invalid JWT token");
         }
-      } catch (Exception e) {
-        logger.error(String.format("JWT token error: %s", e));
       }
     }
     filterChain.doFilter(request, response);

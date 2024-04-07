@@ -2,7 +2,6 @@ package com.faceit.faceit.component;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.faceit.faceit.model.entity.User;
 import org.springframework.stereotype.Component;
 

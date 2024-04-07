@@ -4,7 +4,6 @@ import com.faceit.faceit.dao.CountryRepository;
 import com.faceit.faceit.dao.UserRepository;
 import com.faceit.faceit.exception.UnauthorizedException;
 import com.faceit.faceit.model.dto.*;
-
 import com.faceit.faceit.model.entity.Country;
 import com.faceit.faceit.model.entity.User;
 import com.faceit.faceit.security.JwtCore;
@@ -100,7 +99,7 @@ public class SecurityService {
     return (jwtCore.generateToken(authentication));
   }
 
-  public void changePas(PasswordRequest passwordRequest, HttpServletRequest request) {
+  public String changePas(PasswordRequest passwordRequest, HttpServletRequest request) {
     String authorizationHeader = request.getHeader("Authorization");
     String token;
     if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
@@ -115,5 +114,6 @@ public class SecurityService {
                     new UsernameNotFoundException(String.format("User '%s' not found", username)));
     user.setPassword(passwordEncoder.encode(passwordRequest.getPassword()));
     userRepository.save(user);
+    return username;
   }
 }

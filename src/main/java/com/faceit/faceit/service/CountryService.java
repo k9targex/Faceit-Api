@@ -6,9 +6,7 @@ import com.faceit.faceit.model.entity.Country;
 import com.faceit.faceit.model.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
