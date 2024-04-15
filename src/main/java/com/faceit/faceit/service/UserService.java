@@ -1,12 +1,13 @@
 package com.faceit.faceit.service;
 
 import com.faceit.faceit.dao.PlayerRepository;
+import com.faceit.faceit.dao.UserRepository;
 import com.faceit.faceit.exception.PlayerNotFoundException;
 import com.faceit.faceit.model.entity.Player;
 import com.faceit.faceit.model.entity.User;
-import com.faceit.faceit.dao.UserRepository;
 import com.faceit.faceit.security.UserDetailsImpl;
 import jakarta.transaction.Transactional;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -14,14 +15,10 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.*;
 
 @Service
 @Transactional
@@ -62,7 +59,7 @@ public class UserService implements UserDetailsService {
 
   @CacheEvict(key = "#user.username")
   public void deleteUserCache(User user) {
-    // delete cache
+    //just delete cache
   }
 
   @Cacheable
@@ -84,8 +81,7 @@ public class UserService implements UserDetailsService {
         .orElseThrow(
             () -> new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE, nickname)));
   }
-
-  //  @CacheEvict
+  
   public void deleteUser(String username) {
     User userOptional =
         userRepository

@@ -42,7 +42,6 @@ class SecurityServiceTest {
 
   @Test
    void testRegister_NewUser_Success() {
-    // Arrange
     SignUpRequest signUpRequest =
         SignUpRequest.builder()
             .username("username")

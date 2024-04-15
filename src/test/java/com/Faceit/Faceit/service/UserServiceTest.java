@@ -127,7 +127,6 @@ class UserServiceTest {
   }
     @Test
      void testAddPlayerToUser_NoSuchUser() {
-        // Arrange
         String username = "nonExistentUser";
         String nickname = "testPlayer";
 
@@ -188,7 +187,6 @@ class UserServiceTest {
 
   @Test
    void testGetUsersByPlayer_WhenPlayerExists() {
-    // Arrange
     String nickname = "testPlayer";
     User user1 = new User();
     User user2 = new User();
@@ -207,11 +205,9 @@ class UserServiceTest {
 
   @Test
    void testGetUsersByPlayer_WhenPlayerDoesNotExist() {
-    // Arrange
     String nickname = "nonExistentPlayer";
     when(userRepository.findUsersByFavoritePlayer(nickname)).thenReturn(Optional.empty());
 
-    // Act & Assert
     assertThrows(PlayerNotFoundException.class, () -> {
       userService.getUsersByPlayer(nickname);
     });

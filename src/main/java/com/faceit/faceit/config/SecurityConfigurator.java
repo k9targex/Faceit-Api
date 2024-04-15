@@ -2,6 +2,8 @@ package com.faceit.faceit.config;
 
 import com.faceit.faceit.security.TokenFilter;
 import com.faceit.faceit.service.UserService;
+import java.util.Arrays;
+import java.util.List;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -67,8 +67,8 @@ public class SecurityConfigurator {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     // Отключение CSRF-защиты. Используются jwt токены.
-    http.csrf(AbstractHttpConfigurer::disable)
-        .cors(
+    http.csrf(AbstractHttpConfigurer::disable);
+        http.cors(
             cors ->
                 cors.configurationSource(
                     request -> {
