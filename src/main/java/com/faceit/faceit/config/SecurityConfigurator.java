@@ -66,7 +66,7 @@ public class SecurityConfigurator {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    // Отключение CSRF-защиты.
+    // Отключение CSRF-защиты. Используются jwt токены.
     http.csrf(AbstractHttpConfigurer::disable)
         .cors(
             cors ->
