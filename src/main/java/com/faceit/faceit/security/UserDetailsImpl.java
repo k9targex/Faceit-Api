@@ -8,10 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-/**
- * Реализация интерфейса UserDetails для аутентификации пользователей.
- */
+/** Реализация интерфейса UserDetails для аутентификации пользователей. */
 @Data
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
@@ -28,7 +25,7 @@ public class UserDetailsImpl implements UserDetails {
    */
   public static UserDetailsImpl build(User user) {
     return new UserDetailsImpl(
-            user.getId(), user.getPassword(), user.getUsername(), user.getRole());
+        user.getId(), user.getPassword(), user.getUsername(), user.getRole());
   }
 
   @Override

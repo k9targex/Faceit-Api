@@ -1,6 +1,5 @@
 package com.faceit.faceit.config;
 
-
 import com.faceit.faceit.security.TokenFilter;
 import com.faceit.faceit.service.UserService;
 import lombok.Data;

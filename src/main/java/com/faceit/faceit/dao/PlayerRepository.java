@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface PlayerRepository extends JpaRepository<Player, Long> {
   @EntityGraph(attributePaths = {"subUsers"})
   Optional<Player> findPlayerByNickname(String nickname);
-
 }

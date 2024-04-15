@@ -54,6 +54,4 @@ public class FaceitService {
           HttpStatus.NOT_FOUND.value(), "Player not found", null, null, null);
     }
   }
-
-  private FaceitService() { }
 }

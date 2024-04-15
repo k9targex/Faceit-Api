@@ -27,4 +27,7 @@ public class PointcutDefinitions {
 
   @Pointcut("execution(* com.faceit.faceit.service.UserService.deleteUser(..))")
   public void deleteUserPointcut() { }
+
+  @Pointcut("execution(* com.faceit.faceit.service.*.get*(..))")
+  public void getPointcut() { }
 }

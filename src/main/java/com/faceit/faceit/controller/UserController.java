@@ -52,7 +52,7 @@ public class UserController {
   @PostMapping("/addPlayer")
   public ResponseEntity<String> addPlayerToUser(
       @RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
-    String token = userService.getTokenFromRequest(authorizationHeader);
+    String token = jwtCore.getTokenFromRequest(authorizationHeader);
     String username = jwtCore.getNameFromJwt(token);
     return ResponseEntity.ok(userService.addPlayerToUser(username, nickname));
   }
@@ -60,7 +60,7 @@ public class UserController {
   @GetMapping("/getPlayers")
   public ResponseEntity<Set<Player>> getAllPlayers(
       @RequestHeader("Authorization") String authorizationHeader) {
-    String token = userService.getTokenFromRequest(authorizationHeader);
+    String token = jwtCore.getTokenFromRequest(authorizationHeader);
     String username = jwtCore.getNameFromJwt(token);
     return ResponseEntity.ok(userService.getFavoritePlayersByUsername(username));
   }
@@ -68,7 +68,7 @@ public class UserController {
   @DeleteMapping("/deletePlayer")
   public ResponseEntity<String> deletePlayer(
       @RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
-    String token = userService.getTokenFromRequest(authorizationHeader);
+    String token = jwtCore.getTokenFromRequest(authorizationHeader);
     String username = jwtCore.getNameFromJwt(token);
     userService.removePlayer(username, nickname);
     return ResponseEntity.ok("Player was successfully deleted");

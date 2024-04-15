@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -75,5 +76,17 @@ public class LoggingAspect {
     Object[] args = joinPoint.getArgs();
     String username = (String) args[0];
     log.info("Аккаунт пользователя {" + username + "} был удален");
+  }
+
+  @AfterReturning(value = "PointcutDefinitions.getPointcut()", returning = "object")
+  public void logGetCrate(JoinPoint joinPoint, Object object) {
+    log.info("Returned {}", object);
+  }
+
+  @Before("PointcutDefinitions.getPointcut()")
+  public void logGetCall(JoinPoint joinPoint) {
+    String signatureMethod = joinPoint.getSignature().getName();
+    Object[] args = joinPoint.getArgs();
+    log.info("Method {} was called with arguments {}", signatureMethod, args);
   }
 }
