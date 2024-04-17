@@ -59,7 +59,7 @@ public class UserService implements UserDetailsService {
 
   @CacheEvict(key = "#user.username")
   public void deleteUserCache(User user) {
-    //just delete cache
+    // just delete cache
   }
 
   @Cacheable
@@ -81,7 +81,7 @@ public class UserService implements UserDetailsService {
         .orElseThrow(
             () -> new PlayerNotFoundException(String.format(PLAYER_NOT_FOUND_MESSAGE, nickname)));
   }
-  
+
   public void deleteUser(String username) {
     User userOptional =
         userRepository
@@ -149,12 +149,8 @@ public class UserService implements UserDetailsService {
                 });
 
     Set<Player> favoritePlayers = user.getFavoritePlayers();
-    if (favoritePlayers == null) {
-      favoritePlayers = new HashSet<>();
-    } else {
-      if (favoritePlayers.contains(player)) {
-        return String.format("Игрок с ником %s был добавлен пользователю ранее ", nickname);
-      }
+    if (favoritePlayers.contains(player)) {
+      return String.format("Игрок с ником %s был добавлен пользователю ранее", nickname);
     }
     favoritePlayers.add(player);
     user.setFavoritePlayers(favoritePlayers);
@@ -162,5 +158,44 @@ public class UserService implements UserDetailsService {
     saveUserCache(user);
 
     return String.format("Игрок с ником %s был успешно добавлен", nickname);
+  }
+
+  public String addManyPlayersToUser(String username, List<String> nicknames) {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+
+    Set<Player> favoritePlayers = user.getFavoritePlayers();
+    StringBuilder resultMessage = new StringBuilder();
+    for (String nickname : nicknames) {
+      Player player =
+          playerRepository
+              .findPlayerByNickname(nickname)
+              .orElseGet(
+                  () -> {
+                    Player newPlayer = new Player();
+                    newPlayer.setNickname(nickname);
+                    return playerRepository.save(newPlayer);
+                  });
+
+      if (favoritePlayers.contains(player)) {
+        resultMessage
+            .append(String.format("Игрок с ником %s был добавлен пользователю ранее", nickname))
+            .append("\n");
+      } else {
+        favoritePlayers.add(player);
+        resultMessage
+            .append(String.format("Игрок с ником %s был успешно добавлен", nickname))
+            .append("\n");
+      }
+    }
+
+    user.setFavoritePlayers(favoritePlayers);
+    userRepository.save(user);
+    saveUserCache(user);
+    return resultMessage.toString();
   }
 }

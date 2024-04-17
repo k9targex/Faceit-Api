@@ -57,6 +57,14 @@ public class UserController {
     return ResponseEntity.ok(userService.addPlayerToUser(username, nickname));
   }
 
+  @PostMapping("/addManyPlayers")
+  public ResponseEntity<String> addManyPlayersToUser(
+          @RequestHeader("Authorization") String authorizationHeader, @RequestParam List<String> nicknames) {
+    String token = jwtCore.getTokenFromRequest(authorizationHeader);
+    String username = jwtCore.getNameFromJwt(token);
+    return ResponseEntity.ok(userService.addManyPlayersToUser(username, nicknames));
+  }
+
   @GetMapping("/getPlayers")
   public ResponseEntity<Set<Player>> getAllPlayers(
       @RequestHeader("Authorization") String authorizationHeader) {
