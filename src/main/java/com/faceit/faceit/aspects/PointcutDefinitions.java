@@ -30,4 +30,7 @@ public class PointcutDefinitions {
 
   @Pointcut("execution(* com.faceit.faceit.service.*.get*(..))")
   public void getPointcut() { }
+
+  @Pointcut("execution(* com.faceit.faceit.utilities.RequestCounter.incrementCounter())")
+  public void incrementCounter() {}
 }

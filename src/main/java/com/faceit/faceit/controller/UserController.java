@@ -4,6 +4,7 @@ import com.faceit.faceit.model.entity.Player;
 import com.faceit.faceit.model.entity.User;
 import com.faceit.faceit.security.JwtCore;
 import com.faceit.faceit.service.UserService;
+import com.faceit.faceit.utilities.RequestCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ public class UserController {
 
   private final UserService userService;
   private JwtCore jwtCore;
+  private  RequestCounter requestCounter;
 
   @Autowired
   public UserController(UserService userService) {
@@ -27,9 +29,14 @@ public class UserController {
   public void setJwtCore(JwtCore jwtCore) {
     this.jwtCore = jwtCore;
   }
+  @Autowired
+  public void setRequestCounter(RequestCounter requestCounter){
+    this.requestCounter = requestCounter;
+  }
 
   @GetMapping("/getAllUsers")
   public ResponseEntity<List<User>> getAllUsers() {
+    requestCounter.incrementCounter();
     return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
   }
 

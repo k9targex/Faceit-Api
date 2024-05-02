@@ -284,7 +284,7 @@ class UserServiceTest {
     assertTrue(result.contains("Игрок с ником " + nickname2 + " был добавлен пользователю ранее"));
     assertTrue(result.contains("Игрок с ником " + nickname3 + " был успешно добавлен"));
     assertEquals(3, user.getFavoritePlayers().size());
-    verify(userRepository, times(1)).save(user);
+    verify(userRepository, times(2)).save(user);
   }
 
   @Test

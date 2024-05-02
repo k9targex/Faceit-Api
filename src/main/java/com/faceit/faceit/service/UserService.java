@@ -8,6 +8,7 @@ import com.faceit.faceit.model.entity.User;
 import com.faceit.faceit.security.UserDetailsImpl;
 import jakarta.transaction.Transactional;
 import java.util.*;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -160,42 +161,36 @@ public class UserService implements UserDetailsService {
     return String.format("Игрок с ником %s был успешно добавлен", nickname);
   }
 
-  public String addManyPlayersToUser(String username, List<String> nicknames) {
-    User user =
-        userRepository
-            .findUserByUsername(username)
-            .orElseThrow(
-                () ->
-                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+public String addManyPlayersToUser(String username, List<String> nicknames) {
+  User user =
+          userRepository
+                  .findUserByUsername(username)
+                  .orElseThrow(
+                          () ->
+                                  new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
 
-    Set<Player> favoritePlayers = user.getFavoritePlayers();
-    StringBuilder resultMessage = new StringBuilder();
-    for (String nickname : nicknames) {
-      Player player =
-          playerRepository
-              .findPlayerByNickname(nickname)
-              .orElseGet(
-                  () -> {
-                    Player newPlayer = new Player();
-                    newPlayer.setNickname(nickname);
-                    return playerRepository.save(newPlayer);
-                  });
+  return nicknames.stream()
+          .map(nickname -> {
+            Player player =
+                    playerRepository
+                            .findPlayerByNickname(nickname)
+                            .orElseGet(
+                                    () -> {
+                                      Player newPlayer = new Player();
+                                      newPlayer.setNickname(nickname);
+                                      return playerRepository.save(newPlayer);
+                                    });
 
-      if (favoritePlayers.contains(player)) {
-        resultMessage
-            .append(String.format("Игрок с ником %s был добавлен пользователю ранее", nickname))
-            .append("\n");
-      } else {
-        favoritePlayers.add(player);
-        resultMessage
-            .append(String.format("Игрок с ником %s был успешно добавлен", nickname))
-            .append("\n");
-      }
-    }
-
-    user.setFavoritePlayers(favoritePlayers);
-    userRepository.save(user);
-    saveUserCache(user);
-    return resultMessage.toString();
+            if (user.getFavoritePlayers().contains(player)) {
+              return String.format("Игрок с ником %s был добавлен пользователю ранее", nickname);
+            } else {
+              user.getFavoritePlayers().add(player);
+              userRepository.save(user);
+              saveUserCache(user);
+              return String.format("Игрок с ником %s был успешно добавлен", nickname);
+            }
+          })
+          .collect(Collectors.joining("\n"));
   }
+
 }

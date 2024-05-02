@@ -68,7 +68,7 @@ public class SecurityConfigurator {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     // Отключение CSRF-защиты. Используются jwt токены.
     http.csrf(AbstractHttpConfigurer::disable);
-        http.cors(
+    http.cors(
             cors ->
                 cors.configurationSource(
                     request -> {
@@ -88,6 +88,8 @@ public class SecurityConfigurator {
         .authorizeHttpRequests(
             authorize ->
                 authorize
+                    .requestMatchers("/users/getAllUsers")
+                    .permitAll()
                     .requestMatchers(
                         "/users/addPlayer/**", "/users/getPlayers/**", "users/deletePlayer")
                     .hasAnyRole("ADMIN", "USER")
