@@ -3,11 +3,11 @@ package com.faceit.faceit.controller;
 import com.faceit.faceit.model.dto.PasswordRequest;
 import com.faceit.faceit.model.dto.SignInRequest;
 import com.faceit.faceit.model.dto.SignUpRequest;
+import com.faceit.faceit.service.SecurityService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.faceit.faceit.service.SecurityService;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,6 +28,7 @@ public class SecurityController {
   ResponseEntity<String> signin(@RequestBody SignInRequest signInRequest) {
     return ResponseEntity.ok(securityService.login(signInRequest));
   }
+
 
   @PatchMapping("/editPassword")
   public ResponseEntity<String> editPassword(

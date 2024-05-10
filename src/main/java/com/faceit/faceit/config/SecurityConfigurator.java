@@ -74,7 +74,7 @@ public class SecurityConfigurator {
                     request -> {
                       CorsConfiguration configuration = new CorsConfiguration();
                       configuration.setAllowedOrigins(
-                          List.of("http://localhost:8080")); // Разрешенные источники
+                          List.of("http://localhost:8080","http://localhost:3000/")); // Разрешенные источники
                       configuration.setAllowedMethods(
                           Arrays.asList("GET", "POST", "PUT", "DELETE")); // Разрешенные методы
                       configuration.setAllowedHeaders(
@@ -88,10 +88,8 @@ public class SecurityConfigurator {
         .authorizeHttpRequests(
             authorize ->
                 authorize
-                    .requestMatchers("/users/getAllUsers")
-                    .permitAll()
                     .requestMatchers(
-                        "/users/addPlayer/**", "/users/getPlayers/**", "users/deletePlayer")
+                        "/users/addPlayer/**", "/users/getPlayers/**", "users/deletePlayer","api/v1/faceit/info","users/getUserByName")
                     .hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/users/**", "/country/**")
                     .hasRole("ADMIN")
