@@ -60,7 +60,8 @@
     justify-content: center;
     align-items: center;
     height:170px;
-    background-color: rgba(0, 0, 0, 0.2); 
+    /* background-color: rgba(0, 0, 0, 0.2);  */
+    /* background-color: rebeccapurple; */
     width:400px;
     margin-top:480px;
     margin-left: 50px;
@@ -68,20 +69,22 @@
     transition: transform 0.3s ease;
 
 }
-.user{
-    font-family: "Outfit", sans-serif;
-    font-weight: 900;
-    font-size: 30px;
-    color:aliceblue;
-    text-shadow: 1px 0px 2px rgb(255, 255, 255); 
-    /* box-shadow:0 0 5px rgba(237, 237, 237, 0.984); */
-      
-}
+
 .stats{
+    text-align: center;
+    position: relative;
+    justify-content: center;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.336); 
     /* border: 1px solid rgb(252, 236, 236); */
     box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    text-shadow: 0px 0px 2px rgb(255, 255, 255); 
+
+    color:rgb(235, 239, 243);
+    font-size: 25px;
 
 }
 .k_d{
@@ -159,7 +162,6 @@
 .inputPlayer{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.2); 
-    /* box-shadow:0 0 5px rgba(255, 255, 255, 0.984); */
     height:50px;
     width:350px;
     margin-top: 50px;
@@ -196,24 +198,26 @@
 }
 .buttonStats{
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.2); 
-    height:50px;
-    width:70px;
+    /* background-color: rgba(0, 0, 0, 0.2);  */
+    background-color: transparent;
+    height:40px;
+    width:40px;
     outline: none;
-    border-radius: 20px;
+    top:6px;
+    /* border-radius: 20px; */
     margin-left: 360px;
-    /* border:none; */
-    border: 1px solid rgb(255, 255, 255);
-    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    border:none;
+    /* border: 1px solid rgb(255, 255, 255);/ */
+    /* box-shadow:0 0 5px rgba(255, 255, 255, 0.984); */
     transition: transform 0.3s ease;
 }
 
 .buttonStats:hover{
     
     /* border:none; */
-    transform: scale(1.04);
+    transform: scale(1.2);
 
-    box-shadow:0 0 10px rgba(255, 255, 255, 0.984);
+    /* box-shadow:0 0 10px rgba(255, 255, 255, 0.984); */
   
   }
 .inputFaceit:hover{
@@ -224,7 +228,7 @@
 
 .stats:hover{
     /* box-shadow:0 0 10px rgba(255, 255, 255, 0.984); */
-    transform: scale(1.02);
+    transform: scale(1.03);
 
   }
   .userInfo:hover{
@@ -252,7 +256,9 @@
     position: absolute;
     height:600px;
     width:230px;
+    margin-left: -10px;
     padding: auto;
+    /* background-color: black; */
     /* background: black; */
     overflow: auto;
     padding: 5px 10px 5px 10px;
@@ -261,12 +267,116 @@
 }
 .favorite-players .title{
     color:aliceblue;
+    /* background-color:aqua; */
+    text-align: center;
     font-size: 25px;
     font-weight: 900;
     margin-bottom:15px;
     font-family: "Outfit", sans-serif;
 }
+
+
+
+
+.playerNickname:hover{
+    transform: scale(1.05);
+
+}
+
+.listOfPlayers::-webkit-scrollbar {
+    border:none;
+    outline: none;
+    scrollbar-width: thin; 
+    background-color: transparent; 
+
+  }
+  
+  .listOfPlayers::-webkit-scrollbar-track {
+    border:none;
+    outline: none;
+    background-color: transparent; 
+
+  }
+  
+
+  .listOfPlayers::-webkit-scrollbar-thumb {
+    border:none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.452); 
+    border-radius: 5px;
+  }
+  
+
+  .listOfPlayers::-webkit-scrollbar-thumb:hover {
+    border:none;
+    outline: none;
+    background-color: rgba(55, 54, 54, 0.452); 
+
+  }
+
+  .iconFaceit{
+    position: absolute;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    margin-left: 59px;
+    margin-top: 120px;
+    /* background-color: black; */
+    font-size: 4rem;
+    color:aliceblue
+
+
+  }
+  .info{
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 70px;
+    width: 120px;
+    margin-top: 30px;
+    margin-left: 30px;
+    /* background-color: aqua; */
+  }
+  .user{
+    height: 50px;
+    width: 120px;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top: 200px;
+    /* background-color: blueviolet; */
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+
+    font-size: 30px;
+    color:aliceblue;
+    text-shadow: 1px 0px 2px rgb(255, 255, 255); 
+    /* box-shadow:0 0 5px rgba(237, 237, 237, 0.984); */
+      
+}
+.userName{
+    height: 100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    /* background-color: blueviolet; */
+    justify-content: center;
+    text-align: center;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+
+    font-size: 50px;
+    color:aliceblue;
+    border-radius: 20px;
+
+    text-shadow: 1px 0px 2px rgb(255, 255, 255); 
+  
+      
+}
 .playerNickname{
+    position: relative;
+
     height: 50px;
     /* text-align: center; */
     background-color: rgba(0, 0, 0, 0.452); 
@@ -278,17 +388,57 @@
     font-size: 25px;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.1s ease;
+    transition: transform 0.3s ease;
     box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
-
-
+}
+.dislike{  
+    position: absolute;
+    background-color: transparent;
+    /* background-color: black; */
+    border:none;
+    top:10px;
+    right:10px;
+    outline:none;
+    height:30px;
+    width:30px;
+    border-radius: 10px;
+    transition: transform 0.8s ease;
+  /* z-index: 690; */
+  }
+  .dislike:hover{  
+    
+    /* transform: scale(1.05); */
+  
+  } 
+.choosePlayer{
+        background-color: transparent;
+    /* background-color: rgb(225, 128, 128); */
+    border:none;
+    outline: none;
+    height:100%;
+    width: 100%;
 
 }
+.hide{
+    position: absolute;
+    right:10px;
+    width: 140px;
+    top:10px;
+    background-color: transparent;
+    /* background-color:rgb(255, 4, 4); */
 
+    overflow: hidden;
+    text-align: left;
+    
+}
 .boxForNick{
-    height: 40px;
-    /* text-align: center; */
-    /* background-color:transparent; */
+    position: relative;
+     width:160px;
+     height: 50px;
+
+    background-color:transparent;
+    /* background-color:black; */
+
   
     padding: 5px 20px 5px 20px;
 
@@ -296,56 +446,60 @@
     margin-bottom:10px;
     font-family: "Outfit", sans-serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 22px;
     border-radius: 10px;
 
 }
-.hide{
-    overflow: hidden;
-    
+.dislikeIcon{
+    color:white;
+    font-size: 1.7rem;
+    transition: transform 0.3s ease;
+
 }
-.choosePlayer{
-    background-color:transparent;
-    border:none;
+.dislikeIcon:hover{
+    transform: scale(1.3);
+
+}
+.like{
+    position:absolute;
+    /* background-color: aqua; */
+    background-color: transparent;
+    height:40px;
+    width:40px;
+    left:-50px;
+    top:4px;
+    border-radius: 20px;
     outline: none;
-    height:100%;
+    border:none;
+    /* border: 1px solid rgb(255, 255, 255); */
+    /* box-shadow:0 0 5px rgba(255, 255, 255, 0.984); */
+    transition: transform 0.3s ease;
+
+
+}
+.like:hover{
+    transform: scale(1.2);
+  
+  }
+
+  .likeIcon{
+    font-size: 1em;
+
+    height: 100%;
     width: 100%;
-
-}
-.playerNickname:hover{
-    transform: scale(1.05);
-
-}
-
-.listOfPlayers::-webkit-scrollbar {
-    border:none;
-    outline: none;
-    scrollbar-width: thin; 
-    background-color: transparent; 
-    /* box-shadow:0 0 5px rgba(237, 237, 237, 0.984); */
+    color:rgb(255, 255, 255);
+    background-color: transparent;
+    /* background-color: rgb(255, 127, 127); */
+    /* stroke-width:0px; */
 
   }
-  
-  /* Цвет трека (фонvа) полосы прокрутки */
-  .listOfPlayers::-webkit-scrollbar-track {
-    border:none;
-    outline: none;
-    background-color: transparent; 
 
-  }
-  
-  /* Стиль и цвет ползунка (бегунка) полосы прокрутки */
-  .listOfPlayers::-webkit-scrollbar-thumb {
-    border:none;
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.452); 
-    border-radius: 5px;
-  }
-  
-  /* При наведении на полосу прокрутки */
-  .listOfPlayers::-webkit-scrollbar-thumb:hover {
-    border:none;
-    outline: none;
-    background-color: rgba(55, 54, 54, 0.452); 
+  .findIcon{
+     /* background-color: black;  */
+    height: 38px;
+    width: 36px;
+    color:aliceblue;
+    font-size: 0.5em;
+    stroke-width:30px;
 
   }

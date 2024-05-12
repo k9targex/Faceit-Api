@@ -131,3 +131,34 @@
 .register-link p a:hover{
     text-decoration: underline;
 }
+
+.register-input-box::-webkit-scrollbar {
+    border:none;
+    outline: none;
+    scrollbar-width: thin; 
+    background-color: transparent; 
+
+  }
+  
+  .register-input-box::-webkit-scrollbar-track {
+    border:none;
+    outline: none;
+    background-color: transparent; 
+
+  }
+  
+
+  .register-input-box::-webkit-scrollbar-thumb {
+    border:none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.452); 
+    border-radius: 5px;
+  }
+  
+
+  .register-input-box::-webkit-scrollbar-thumb:hover {
+    border:none;
+    outline: none;
+    background-color: rgba(55, 54, 54, 0.452); 
+
+  }

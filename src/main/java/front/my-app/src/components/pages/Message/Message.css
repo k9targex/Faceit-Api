@@ -1,0 +1,70 @@
+.message-wrapper{
+    /* position: relative; */
+    justify-content: center;
+    background-image:url('./../../assets/firewatch-4.0.jpg');
+    height:100vh;
+    /* width:100vh; */
+    background-size: cover; 
+    background-position: center;
+ 
+}
+
+.message{
+    /* position: relative; */
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color:aliceblue;
+    margin-top: 20px;
+    text-shadow: 0px 0px px rgb(255, 255, 255); 
+
+
+}
+
+.messageBox{
+    position: absolute;
+    /* position: fixed; */
+    height:200px;
+    width:400px;
+    top:100px;
+    right:630px;
+    /* transform: translate(-50%, -50%);  */
+    text-align: center;
+    background-color: rgba(73, 13, 13, 0.486); 
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    text-shadow: 0px 0px 2px rgb(255, 255, 255); 
+    color:rgb(235, 239, 243);
+    border-radius: 20px;
+    font-size: 25px;
+    transition: transform 0.3s ease;
+    
+}
+.messageBox:hover{
+    transform: scale(1.1);
+
+}
+.buttonDoor{
+    border:none;
+    outline: none;
+    margin-top: 10px;
+    background-color: transparent;
+    border:none;
+
+}
+.buttonDoor:hover{
+    transform: scale(1.1);
+
+}
+.buttonDoor:active{
+    /* transform: scale(1.1); */
+    border:none;
+    outline:none;
+
+}
+.door{
+    margin-top: 2px;
+    height: 100px;
+    width: 100px;
+    background-color: transparent;
+    color:aliceblue;
+}

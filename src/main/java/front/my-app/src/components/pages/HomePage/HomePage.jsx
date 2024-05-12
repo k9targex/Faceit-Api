@@ -1,4 +1,4 @@
-import React, { useState,useContext, useRef } from 'react';
+import React, { useState,useContext, useRef,useEffect  } from 'react';
 
 import {Parallax,ParallaxLayer} from '@react-spring/parallax'
 import './HomePage.css';
@@ -6,14 +6,25 @@ import TextBlock from './TextBlock';
 import { SiFaceit } from "react-icons/si";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import { SlMagnifier,SlGraph  } from "react-icons/sl";
 import {  Link,useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
     const navigate = useNavigate();
 
+    const [tokenState,setTokenState] = useState('');
+
     const [nickname, setNickname] = useState('');
-
-
+   
+    useEffect(() => {
+        const token = Cookies.get('token');
+        if (!token) {
+            // Если токен отсутствует, перенаправляем на страницу регистрации
+            navigate("/message");
+        } else {
+            setTokenState(token);
+        }
+    }, []);
     const handleSubmit = async (event) => {
         event.preventDefault(); 
         const data = {
@@ -100,7 +111,7 @@ export const HomePage = () => {
                          value={nickname} 
                          onChange={(event) => setNickname(event.target.value)}  required
                         />
-                        <button type="submit" className='buttonHome'> <SiFaceit className='iconHome'/></button>
+                        <button type="submit" className='buttonHome'> <SlMagnifier className='iconHome'/></button>
                     </div>
                 </div>
 

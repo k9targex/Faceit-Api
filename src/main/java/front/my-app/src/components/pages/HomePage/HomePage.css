@@ -139,7 +139,7 @@
 }
 .search-wrapper{
   position: relative;
-   display: flex; 
+  display: flex; 
   justify-content: center;  
   align-items: center; 
   padding:10px;
@@ -149,45 +149,35 @@
 
 .search-wrapper .buttonHome{
   display: flex; 
-  /* justify-content: center;   */
   align-items: center; 
   position: absolute;
-  right: 7px;
-  width:100px;
-  height: 60px;
-  margin-left: 0px;
-  /* background-color: #000000; */
+  right: 70px;
+  width:40px;
+  height: 40px;
   background: transparent;
-
   border-color: #ffffff;
-  border: 2px solid rgb(205, 205, 205);
-
+  border:none;
+  
   outline: none;
   font-size: 20px;
   color: #ffffff;
   font-weight: 700;
   z-index: 10;
-  border-radius: 40px;
   transition: transform 0.3s ease;
 
 }
 .buttonHome:hover{
-  box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
   transform: scale(1.1);
 }
-.buttonHome:active {
-  background-color: darkgray;
-  color: white;
-}
+
 .search-wrapper .inputNick:hover{
-  /* border: 2px solid rgb(255, 255, 255); */
   box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
 
 }
 
 .search-wrapper .inputNick{
-  width: 500px;
-  height:70px;
+  width: 400px;
+  height:60px;
   background-color: rgba(1, 1, 1, 0.307); 
 
   backdrop-filter: blur(70px);
@@ -196,22 +186,19 @@
   font-size: 15px;
   outline:none;
   border: 2px solid rgba(255,255,255,.2);
-  border-radius: 40px;
-  font-size: 40px;
+  border-radius: 20px;
+  font-size: 30px;
   color: #ffffff;
-  padding: 20px 115px 20px 40px;
+  padding: 20px 85px 20px 40px;
 }
 .iconHome{
-  position:absolute;
   font-size: 2.8rem;
-  /* height:100px; */
-  left:22px;
-  color:rgb(96, 87, 87) ;
-
-
+  height: 40px;
+  width:40px;
+  color: rgba(201, 199, 199, 0.975); 
+  background-color: transparent;
   transition: transform 0.3s ease;
 }
-
 
 .search-wrapper .inputNick::placeholder{
   color: rgba(124, 119, 119, 0.923); 

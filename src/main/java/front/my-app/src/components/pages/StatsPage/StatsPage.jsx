@@ -2,17 +2,33 @@
 import './StatsPage.css'
 import Cookies from 'js-cookie';
 import axios from "axios";
-import React, { useState,useContext, useRef } from 'react';
+import React, { useState,useContext, useRef,useEffect  } from 'react';
 import { SiFaceit } from "react-icons/si";
 import {  Link,useNavigate } from "react-router-dom"
 import { GiSkullCrack,GiTripleSkulls } from "react-icons/gi";
 import { FiPercent } from "react-icons/fi";
 import { LuCrown } from "react-icons/lu";
 import { BsGraphUp } from "react-icons/bs";
+import { IoHeartDislikeSharp,IoHeartDislikeOutline,IoSkullOutline  } from "react-icons/io5";
+import { RiHeartAdd2Line } from "react-icons/ri";
+import { SlMagnifier,SlGraph  } from "react-icons/sl";
+import { GiAngelOutfit } from "react-icons/gi";
 export const StatsPage = () => {
+  
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
+  const [tokenState,setTokenState] = useState('');
+  const [isPlayerInList, setIsPlayerInList] = useState(false);
+ 
+  useEffect(() => {
+    const token = Cookies.get('token');
+      if (!token) {
+          navigate("/message");
 
+      } else {
+          setTokenState(token);
+      }
+  }, []);
 
   const backgroundImageUrl = Cookies.get('avatar');
   const username = Cookies.get('username');
@@ -29,33 +45,21 @@ export const StatsPage = () => {
   const longest_win =Cookies.get('longest_win');
   const nicknamesString = Cookies.get('favoritePlayers');
 
+ 
+  const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
   
-  // if (!nicknamesString || nicknamesString === '') {
-  //     return <div>No favorite players selected</div>;
-  // }
-
-  // Преобразуем строку обратно в массив
-  const nicknames = JSON.parse(nicknamesString);
-    // Стили для установки заднего фона
     const avatarStyle = {
         backgroundImage: `url(${backgroundImageUrl})`, // Устанавливаем фоновое изображение
         backgroundSize: 'cover', // Устанавливаем размер фона
         backgroundPosition: 'center', // Устанавливаем позицию фона
     };
-    // const handleButtonClick =  async (event,)  => {
-    //   event.preventDefault(); 
-    //   setNickname(clickedNickname);
-    //   console.log(clickedNickname);
-      
-    // }
+ 
     const handleSubmit = async (event,nickname) => {
         event.preventDefault(); 
         const data = {
             nickname: nickname
         };
     
-        
-      const token = Cookies.get('token');
      
       axios
         .get("http://localhost:8080/api/v1/faceit/info",{
@@ -64,7 +68,7 @@ export const StatsPage = () => {
                 nickname: data.nickname
             },
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${tokenState}`
             }
         } )
         .then((response) => {
@@ -102,13 +106,119 @@ export const StatsPage = () => {
         });
         
     };
+    const handleDislike = async (event,nickname) => {
+      event.preventDefault(); 
+      const data = {
+          nickname: nickname
+      };
+  
+   
+    axios
+      .delete("http://localhost:8080/users/deletePlayer",{
 
+          params: {
+              nickname: data.nickname
+          },
+          headers: {
+              Authorization: `Bearer ${tokenState}`
+          }
+      } )
+      .then((response) => {
+        const   nicknamesString = Cookies.get('favoritePlayers');
+        console.log(nicknamesString);
+
+ 
+        const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];  
+        console.log(nicknames);
+        const excludedNickname = data.nickname;  
+
+        const filteredNicknames = nicknames.filter(player => player !== excludedNickname);
+
+        console.log(excludedNickname);
+        
+        console.log(filteredNicknames);
+        const updatedNicknamesString = JSON.stringify(filteredNicknames);
+        
+
+        Cookies.set('favoritePlayers',updatedNicknamesString);
+        window.location.reload();
+      })
+      .catch((error) => {
+          console.error("haha:", error);
+      });
+   
+  };
+  const handleLike = async (event) => {
+    event.preventDefault(); 
+    const data = {
+        nickname: Cookies.get('username')
+    };
+    console.log(data.nickname);
+
+    axios.post("http://localhost:8080/users/addPlayer?nickname=" + data.nickname, null, {
+      headers: {
+          Authorization: `Bearer ${tokenState}`
+      }
+  })
+    .then((response) => {
+      const   nicknamesString = Cookies.get('favoritePlayers');
+      const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];  
+      const nicknameToAdd = data.nickname; 
+      if (!nicknames.includes(nicknameToAdd)) {
+        nicknames.push(nicknameToAdd);
+    
+        const updatedNicknamesString = JSON.stringify(nicknames);
+        
+        Cookies.set('favoritePlayers', updatedNicknamesString);
+  
+        console.log(updatedNicknamesString);
+        window.location.reload();
+      }
+    })
+    .catch((error) => {
+      console.error("haha:", tokenState);
+
+        console.error("haha:", error);
+    });
+    
+ 
+};
+
+useEffect(() => {
+  const checkPlayerInList = () => {
+    const nickname = Cookies.get('username');
+      const nicknamesString = Cookies.get('favoritePlayers');
+      const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
+
+      setIsPlayerInList(nicknames.includes(nickname));
+  };
+
+  checkPlayerInList();
+}, [nickname]);
+
+  const checkPlayerInList = () => {
+  nickname = Cookies.get('username');
+  const nicknamesString = Cookies.get('favoritePlayers');
+  const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
+  return nicknames.includes(nickname);
+};
 
   return (
     <div className='stats-wrapper'>
             <form  onSubmit={(event) => handleSubmit(event, nickname)} >
 
       <div className='inputPlayer'>
+      {!isPlayerInList && (
+      <button
+        type="button"
+        className='like'
+        onClick={(event) => handleLike(event)} 
+    >
+        <RiHeartAdd2Line className='likeIcon'/>
+    </button>
+    )}
+
+
       <input className='inputFaceit'
                          type="text" 
                          placeholder='m0nesy' 
@@ -116,6 +226,7 @@ export const StatsPage = () => {
                          onChange={(event) => setNickname(event.target.value)}  required
                         />
       <button type="submit" className='buttonStats' > 
+      <SlMagnifier className='findIcon'/>
       </button>
       </div>
       
@@ -124,49 +235,69 @@ export const StatsPage = () => {
             <div className='userAvatar' style={avatarStyle}></div>
           </div>
         <div className='userInfo'>
-          <p className='user'>{username}</p>
+    
+          <p className='userName'>{username}</p>
         </div>
+    
       </div>
       <div className='main-stats'>
           
               <div className='stats k_d'>
+                <p className='info'>K/D</p>
+                <GiAngelOutfit   className='iconFaceit'/>
                 <p className='user'>{k_d}</p>
+                
               </div>
 
               <div className='stats av_headshots'>
-                <p className='user'>{av_headshots}</p> <GiSkullCrack className='iconFaceit'/>
+                 <p className='info'>Average headshots</p>
+                 <GiSkullCrack className='iconFaceit'/>
+                 <p className='user'>{av_headshots}</p>
               </div>
 
               <div className='stats total_headshots'>
-                <p className='user'>{tot_headshots}</p>
+               <p className='info'>Total headshots</p>
                 <GiTripleSkulls className='iconFaceit'/>
+                <p className='user'>{tot_headshots}</p>
+
               </div>
 
               <div className='stats matches'>
+                <p className='info'>Matches</p>
+                <SlGraph  className='iconFaceit'/>
                 <p className='user'>{matches}</p>
-                <GiSkullCrack className='iconFaceit'/>
+
               </div>
 
               <div className='stats wins'>
-                <p className='user'>{wins}</p>
+                <p className='info'>Wins</p>
                 <LuCrown  className='iconFaceit'/>
+                <p className='user'>{wins}</p>
+
               </div>
 
               <div className='stats win_rate'>
-                <p className='user'>{win_rate}</p>
+                <p className='info'>Win rate</p>
                 <FiPercent className='iconFaceit'/>
+                <p className='user'>{win_rate}</p>
+
               </div>
 
               <div className='stats current_win'>
+                <p className='info'>Current strick</p>
+                <LuCrown  className='iconFaceit'/>
+
                 <p className='user'>{current_win}</p>
-                <BsGraphUp  className='iconFaceit'/>
+
               </div>
           
               <div className='stats longest_win'>
+                <p className='info'>Longest strick</p>
+                <BsGraphUp  className='iconFaceit'/>
+
+   
                   <p className='user'>{longest_win}</p>
-                  <LuCrown  className='iconFaceit'/>
-                  <LuCrown  className='iconFaceit'/>
-                  <LuCrown  className='iconFaceit'/>
+
 
               </div>
         
@@ -174,7 +305,7 @@ export const StatsPage = () => {
       </div>
       <div className='favorite-players'>
         
-      <p className='title'>Favorite Players
+      <p className='title'>Favorite players
       </p>
       <div className="listOfPlayers">
   
@@ -185,14 +316,21 @@ export const StatsPage = () => {
                     
                     <button type="button"         className='choosePlayer'
                      onClick={(event) => handleSubmit(event, nickname)} 
-                     > <div className='boxForNick'>
+                     >
+                     
+                     <div className='boxForNick'>
                        <div className='hide'>
                       {nickname}
                       </div>
+                      
                       </div>
-
+                      </button> 
+                      
+                      <button className='dislike'  type="button"         
+                     onClick={(event) => handleDislike(event, nickname)} 
+                     >
+                      <IoHeartDislikeOutline className='dislikeIcon' />
                       </button>
-                    
                     </div>
                     
 
