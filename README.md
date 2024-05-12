@@ -5,7 +5,7 @@
 
 Faceit Api is a project that provides a simple way to retrieve player statistics in Counter-Strike: Global Offensive using the Faceit API. Faceit is one of the leading platforms for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
 <p align="center">
-  <img src="Picture.png" alt="Preview" width="300"style="border-radius: 20px; overflow: hidden;">
+  <img src="Picture.png" alt="Preview" width="1000"style="border-radius: 40px; overflow: hidden;">
 </p>
 
 ## Installation and Running
