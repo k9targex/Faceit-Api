@@ -6,15 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.ArrayList;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PlayerInfo {
-  @JsonProperty("items")
-  private ArrayList<PlayerItem> items;
+class Game {
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("skill_level")
+    private String skillLevel;
+
+
 
 }

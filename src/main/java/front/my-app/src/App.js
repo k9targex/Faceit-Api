@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./components/pages/HomePage/HomePage";
 import SignIn from "./components/pages/LoginForm/LoginForm";
 import SignUp from "./components/pages/RegisterForm/RegisterForm";
-
+import StatsPage from "./components/pages/StatsPage/StatsPage";
 
 
 class App extends React.Component {
@@ -19,6 +19,7 @@ class App extends React.Component {
                       <Route path="/signin" element={<SignIn/>} />
                       <Route path="/signup" element={<SignUp/>} /> 
                       <Route path="/home" element={<HomePage/>} /> 
+                      <Route path="/stats" element={<StatsPage/>} /> 
 
                   </Routes>
               </div>

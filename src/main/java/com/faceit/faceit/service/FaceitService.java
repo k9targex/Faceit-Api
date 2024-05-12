@@ -1,18 +1,19 @@
 package com.faceit.faceit.service;
 
+import com.faceit.faceit.model.PlayerInfo;
 import com.faceit.faceit.model.PlayerInfoAndStats;
+import com.faceit.faceit.model.PlayerStats;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import com.faceit.faceit.model.PlayerStats;
-import com.faceit.faceit.model.PlayerInfo;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @Service
 public class FaceitService {
   @Value("${faceit.api}")
   private String token;
+
 
   public PlayerInfoAndStats getRequest(String nickname) {
     String templateByNickname =
@@ -47,7 +48,7 @@ public class FaceitService {
       PlayerInfoAndStats playerInfoAndStats = new PlayerInfoAndStats();
       playerInfoAndStats.setPlayerInfo(responseByNickname);
       playerInfoAndStats.setPlayerStats(responseById);
-
+      playerInfoAndStats.setSkillLevel(responseByNickname.getItems().get(0).getSkillLevel());
       return playerInfoAndStats;
     } else {
       throw new WebClientResponseException(

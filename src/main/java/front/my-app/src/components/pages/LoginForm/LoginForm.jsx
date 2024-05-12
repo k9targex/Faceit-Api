@@ -41,9 +41,12 @@ const LoginForm = () => {
                 }
             })
             .then((response) => {
+                  const nicknames = response.data.favoritePlayers.map(player => player.nickname);
+                  const nicknamesString = JSON.stringify(nicknames);
                     Cookies.set('token', token);
                     Cookies.set('id', response.data.id);
                     Cookies.set('username', response.data.username);
+                    Cookies.set('favoritePlayers', nicknamesString);
                     navigate("/home");
                     window.location.reload();
                 })
@@ -58,7 +61,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className='login-wrapper'>
+    <body className='lg'>
+    <div className='login-wrapper '>
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="login-input-box">
@@ -91,6 +95,7 @@ const LoginForm = () => {
         </div>
       </form>
     </div>
+    </body>
   );
 }
 

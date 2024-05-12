@@ -5,19 +5,21 @@
   padding:0;
   box-sizing:border-box;
 }
-body {
+body .lg,.rg {
   
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content:center;
+  background: url('./components/assets/firewatch_150305_01.0.png');
   align-items: center;
   min-height: 100vh;
-   background: url('./components/assets/firewatch_150305_01.0.png') no-repeat; 
-  background-size: cover;
+   background-size: cover; 
   background-position: center;
-}
+} 
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

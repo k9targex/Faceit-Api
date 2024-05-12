@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +24,19 @@ public class PlayerItem {
 
   @JsonProperty("country")
   private String country;
+
+  @JsonProperty("games")
+  private List<Game> games;
+
+
+  public String getSkillLevel() {
+    if (games != null) {
+      for (Game game : games) {
+        if (game.getName().equals("cs2")) {
+          return game.getSkillLevel();
+        }
+      }
+    }
+    return "3";
+  }
 }

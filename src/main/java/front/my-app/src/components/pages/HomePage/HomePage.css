@@ -1,0 +1,218 @@
+
+#ter{
+  background-image: url('./../../assets/ter3.png');
+  height: 110px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top:212px;
+  left: 250px;
+}
+#ct{
+  background-image: url('./../../assets/contr.png');
+  height: 350px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top:300px;
+   left:-230px; 
+
+} 
+.MirWall {
+  position: relative;
+  display: flex; 
+  justify-content: center;  
+  /* align-items: center;  */
+  width: 100%;
+  height: 100%;
+}
+
+#rightHand{
+  background-image: url('./../../assets/rightHand.png');
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top:62vh;
+  /* left:10px; */
+  right:-35vw;
+
+
+}
+#leftHand{
+  background-image: url('./../../assets/leftHand.png');
+  height: 30vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top:72vh;
+  right:0vh;
+
+
+}
+
+#firebox{
+  background-image: url('./../../assets/firebox.png');
+  height: 385px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top:293px;
+  left:-125px;
+}
+#mirage{
+  background: url('./../../assets/mir2.jpg');
+   height: 100%;
+   width: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.animation p{
+  background-color:#F3D3A8;
+  color: black;
+}
+.animation, .animation_layer {
+	height: 1000px;
+  
+}
+
+.animation {
+  display: block;
+	position: relative;
+	z-index: 10;
+}
+
+.animation_layer {
+	background-position: bottom center;
+	background-size: auto 1038px;
+	background-repeat: repeat-x;
+	width: 100%;
+	position: absolute;
+}
+.animation_layer.parallax {
+	position: fixed;
+}
+
+#wallpapers{
+  height:10000px;
+  background-color:#F3D3A8;
+}
+
+
+#textblock {
+  background-color: #f8c684;
+  height: 100vh;
+}
+
+#textblock-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+#textblock-title {
+  color: #000000;
+  font-size: 50px;
+  font-weight: 600;
+  /* text-align: center; */
+  font-family: "Helvetica Neue";
+}
+
+#textblock-content {
+  color: #020202;
+  background-color:#f8c684 ;
+  font-size: 20px;
+}
+.search {
+
+  display: flex; 
+  justify-content: center;  
+  /* align-items: center; */
+  /* transform: translate(-50%, -50%); */
+  width: 700px;
+  height: 300px;
+  position: relative;
+  z-index: 100;
+
+}
+.search-wrapper{
+  position: relative;
+   display: flex; 
+  justify-content: center;  
+  align-items: center; 
+  padding:10px;
+  width: 500px;
+  height: 200px;
+}
+
+.search-wrapper .buttonHome{
+  display: flex; 
+  /* justify-content: center;   */
+  align-items: center; 
+  position: absolute;
+  right: 7px;
+  width:100px;
+  height: 60px;
+  margin-left: 0px;
+  /* background-color: #000000; */
+  background: transparent;
+
+  border-color: #ffffff;
+  border: 2px solid rgb(205, 205, 205);
+
+  outline: none;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  z-index: 10;
+  border-radius: 40px;
+  transition: transform 0.3s ease;
+
+}
+.buttonHome:hover{
+  box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+  transform: scale(1.1);
+}
+.buttonHome:active {
+  background-color: darkgray;
+  color: white;
+}
+.search-wrapper .inputNick:hover{
+  /* border: 2px solid rgb(255, 255, 255); */
+  box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+
+}
+
+.search-wrapper .inputNick{
+  width: 500px;
+  height:70px;
+  background-color: rgba(1, 1, 1, 0.307); 
+
+  backdrop-filter: blur(70px);
+  font-family: "Outfit", sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  outline:none;
+  border: 2px solid rgba(255,255,255,.2);
+  border-radius: 40px;
+  font-size: 40px;
+  color: #ffffff;
+  padding: 20px 115px 20px 40px;
+}
+.iconHome{
+  position:absolute;
+  font-size: 2.8rem;
+  /* height:100px; */
+  left:22px;
+  color:rgb(96, 87, 87) ;
+
+
+  transition: transform 0.3s ease;
+}
+
+
+.search-wrapper .inputNick::placeholder{
+  color: rgba(124, 119, 119, 0.923); 
+}

@@ -1,0 +1,351 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.stats-wrapper{
+    /* background-color: #e00000;
+     */
+     background-image: url(./../../assets/firewatch-4.0.jpg);
+    background-size: cover; 
+    background-position: center;
+    min-height: 100vh;
+    position:relative;
+}
+
+.main-info{
+    position: absolute;
+    height:700px;
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    background: transparent;
+    backdrop-filter: blur(80px);
+    width:500px;
+    margin-top: 90px;
+    margin-left:40px;
+    border-radius: 20px;
+
+}
+.main-stats{
+    position: absolute;
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    background: transparent;
+    backdrop-filter: blur(80px);
+    height:700px;
+    width:810px;
+    margin-top: 90px;
+    margin-left:560px;
+    border-radius: 20px;
+
+}
+.avatarBox{
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.407); 
+    height:400px;
+    width:400px;
+    margin:50px;
+    border-radius: 20px;
+}
+.userAvatar{
+
+    position: absolute;
+    height:395px;
+    width:395px;
+    margin:2px;
+    border-radius: 20px;
+}
+
+.userInfo{
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:170px;
+    background-color: rgba(0, 0, 0, 0.2); 
+    width:400px;
+    margin-top:480px;
+    margin-left: 50px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+
+}
+.user{
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color:aliceblue;
+    text-shadow: 1px 0px 2px rgb(255, 255, 255); 
+    /* box-shadow:0 0 5px rgba(237, 237, 237, 0.984); */
+      
+}
+.stats{
+    background-color: rgba(0, 0, 0, 0.336); 
+    /* border: 1px solid rgb(252, 236, 236); */
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    transition: transform 0.3s ease;
+
+}
+.k_d{
+    position: absolute;
+    height:290px;
+
+    width:180px;
+    margin-top:50px;
+    margin-left: 30px;
+    border-radius: 20px;
+}
+.av_headshots{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:50px;
+    margin-left: 220px;
+    border-radius: 20px;
+}
+
+.total_headshots{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:50px;
+    margin-left: 410px;
+    border-radius: 20px;
+}
+.matches{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:50px;
+    margin-left: 600px;
+    border-radius: 20px;
+}
+
+
+
+.wins{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:360px;
+    margin-left: 30px;
+    border-radius: 20px;
+}
+.win_rate{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:360px;
+    margin-left: 220px;
+    border-radius: 20px;
+}
+
+.current_win{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:360px;
+    margin-left: 410px;
+    border-radius: 20px;
+}
+.longest_win{
+    position: absolute;
+    height:290px;
+    width:180px;
+    margin-top:360px;
+    margin-left: 600px;
+    border-radius: 20px;
+}
+
+
+.inputPlayer{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2); 
+    /* box-shadow:0 0 5px rgba(255, 255, 255, 0.984); */
+    height:50px;
+    width:350px;
+    margin-top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+
+}
+
+
+
+.inputFaceit{
+    position: absolute;
+    height:100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: transparent;
+    border:none;
+    outline: none;
+    padding: 20px 20px 20px 20px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color:aliceblue;
+    border: 1px solid rgb(255, 255, 255);
+
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    transition: transform 0.3s ease;
+
+
+}
+.inputFaceit::placeholder{
+    color: rgba(39, 37, 37, 0.2); 
+}
+.buttonStats{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2); 
+    height:50px;
+    width:70px;
+    outline: none;
+    border-radius: 20px;
+    margin-left: 360px;
+    /* border:none; */
+    border: 1px solid rgb(255, 255, 255);
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    transition: transform 0.3s ease;
+}
+
+.buttonStats:hover{
+    
+    /* border:none; */
+    transform: scale(1.04);
+
+    box-shadow:0 0 10px rgba(255, 255, 255, 0.984);
+  
+  }
+.inputFaceit:hover{
+    transform: scale(1.02);
+
+    box-shadow:0 0 10px rgba(255, 255, 255, 0.984);
+}
+
+.stats:hover{
+    /* box-shadow:0 0 10px rgba(255, 255, 255, 0.984); */
+    transform: scale(1.02);
+
+  }
+  .userInfo:hover{
+    /* box-shadow:0 0 10px rgba(255, 255, 255, 0.984); */
+    transform: scale(1.02);
+
+  }
+
+  .favorite-players{
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    position: absolute;
+    background: transparent;
+    backdrop-filter: blur(80px);
+    height:700px;
+    width:250px;
+    margin-top: 90px;
+    margin-left:1390px;
+    border-radius: 20px;
+    padding: 20px;
+   
+
+
+}
+.listOfPlayers{
+    position: absolute;
+    height:600px;
+    width:230px;
+    padding: auto;
+    /* background: black; */
+    overflow: auto;
+    padding: 5px 10px 5px 10px;
+
+
+}
+.favorite-players .title{
+    color:aliceblue;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom:15px;
+    font-family: "Outfit", sans-serif;
+}
+.playerNickname{
+    height: 50px;
+    /* text-align: center; */
+    background-color: rgba(0, 0, 0, 0.452); 
+
+    color:aliceblue;
+    margin-bottom:10px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.1s ease;
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+
+
+
+}
+
+.boxForNick{
+    height: 40px;
+    /* text-align: center; */
+    /* background-color:transparent; */
+  
+    padding: 5px 20px 5px 20px;
+
+    color:aliceblue;
+    margin-bottom:10px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 10px;
+
+}
+.hide{
+    overflow: hidden;
+    
+}
+.choosePlayer{
+    background-color:transparent;
+    border:none;
+    outline: none;
+    height:100%;
+    width: 100%;
+
+}
+.playerNickname:hover{
+    transform: scale(1.05);
+
+}
+
+.listOfPlayers::-webkit-scrollbar {
+    border:none;
+    outline: none;
+    scrollbar-width: thin; 
+    background-color: transparent; 
+    /* box-shadow:0 0 5px rgba(237, 237, 237, 0.984); */
+
+  }
+  
+  /* Цвет трека (фонvа) полосы прокрутки */
+  .listOfPlayers::-webkit-scrollbar-track {
+    border:none;
+    outline: none;
+    background-color: transparent; 
+
+  }
+  
+  /* Стиль и цвет ползунка (бегунка) полосы прокрутки */
+  .listOfPlayers::-webkit-scrollbar-thumb {
+    border:none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.452); 
+    border-radius: 5px;
+  }
+  
+  /* При наведении на полосу прокрутки */
+  .listOfPlayers::-webkit-scrollbar-thumb:hover {
+    border:none;
+    outline: none;
+    background-color: rgba(55, 54, 54, 0.452); 
+
+  }

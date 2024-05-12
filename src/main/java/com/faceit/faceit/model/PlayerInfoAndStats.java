@@ -8,4 +8,7 @@ import lombok.NoArgsConstructor;
 public class PlayerInfoAndStats {
   private PlayerInfo playerInfo;
   private PlayerStats playerStats;
+  private String skillLevel;
+
+
 }

@@ -41,9 +41,7 @@ public class FaceitController {
   }
 
   @GetMapping("/faceit/info")
-  public String getControl(@RequestParam(defaultValue = "s1mple") String nickname, Model model) {
-    PlayerInfoAndStats playerInfoAndStats = faceitService.getRequest(nickname);
-    model.addAttribute("playerInfoAndStats", playerInfoAndStats);
-    return "index";
+  public ResponseEntity<PlayerInfoAndStats> getControl(@RequestParam(defaultValue = "s1mple") String nickname, Model model) {
+    return new ResponseEntity<>(faceitService.getRequest(nickname), HttpStatus.OK);
   }
 }

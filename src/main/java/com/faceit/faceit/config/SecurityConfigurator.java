@@ -89,7 +89,7 @@ public class SecurityConfigurator {
             authorize ->
                 authorize
                     .requestMatchers(
-                        "/users/addPlayer/**", "/users/getPlayers/**", "users/deletePlayer","api/v1/faceit/info","users/getUserByName")
+                        "/users/addPlayer/**", "/users/getPlayers/**", "users/deletePlayer","api/v1/faceit/info","users/getUserByName","faceit/info")
                     .hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/users/**", "/country/**")
                     .hasRole("ADMIN")
