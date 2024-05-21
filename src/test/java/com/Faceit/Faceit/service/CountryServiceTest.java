@@ -30,7 +30,7 @@ import static org.mockito.Mockito.*;
     @Test
      void testGetCountryUsers_WhenCountryExists() {
         String countryName = "TestCountry";
-        Country country = new Country();
+        country = new Country();
         List<User> users = new ArrayList<>();
         users.add(new User());
         users.add(new User());
