@@ -1,6 +1,3 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
 
 # <center>Faceit Api</center>
 
@@ -8,7 +5,7 @@
 
 Faceit Api is a project that provides a simple way to retrieve player statistics in Counter-Strike: Global Offensive using the Faceit API. Faceit is one of the leading platforms for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
 <p align="center">
-  <img src="Picture.png" alt="Preview" width="300"style="border-radius: 20px; overflow: hidden;">
+  <img src="Picture3.png" alt="Preview" width="1000"style="border-radius: 40px; overflow: hidden;">
 </p>
 
 ## Installation and Running
