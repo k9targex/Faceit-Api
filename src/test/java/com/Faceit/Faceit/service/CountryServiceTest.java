@@ -126,7 +126,7 @@ import static org.mockito.Mockito.*;
     @Test
      void testDeleteCountry_WhenCountryExists() {
         String countryName = "TestCountry";
-        Country country = new Country();
+        country = new Country();
 
         when(countryRepository.findCountryByCountryName(countryName)).thenReturn(Optional.of(country));
         countryService.deleteCountry(countryName);
