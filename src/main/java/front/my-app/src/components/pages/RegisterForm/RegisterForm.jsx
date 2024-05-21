@@ -1,129 +1,152 @@
 // RegisterForm.js
-import React, { useState,useContext, useRef } from 'react';
+import React, {useState, useEffect} from 'react';
 import './RegisterForm.css';
-import { FaUser, FaLock } from "react-icons/fa";
-import { IoEarth } from "react-icons/io5";
-import {  Link,useNavigate } from "react-router-dom"
-import Cookies from 'js-cookie';
+import {FaUser, FaLock} from "react-icons/fa";
+import {IoEarth} from "react-icons/io5";
+import {Link, useNavigate,} from "react-router-dom"
 import axios from "axios";
+import {FaAsterisk} from "react-icons/fa6";
 
 const RegisterForm = () => {
-  const navigate = useNavigate();
-  
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [country, setCountry] = useState('');
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [country, setCountry] = useState('');
+    const [isBlockVisible, setIsBlockVisible] = useState(false);
+    const [is401Reg, setIs401Reg] = useState(false);
+
+    const toggleBlockVisibility = () => {
+        setIsBlockVisible(!isBlockVisible);
+    };
 
 
-  const handleSubmit = async (event) => {
-    event.preventDefault(); 
+    const handleClickReg = () => {
+        setIs401Reg(false);
+    };
+    useEffect(() => {
+        if (is401Reg)
+            document.addEventListener('click', handleClickReg);
+        return () => {
+            if (is401Reg)
+                document.removeEventListener('click', handleClickReg);
+        };
+    }, [is401Reg]);
 
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (country === '') {
+
+            return
+        }
         const data = {
             username: username,
             password: password,
             country: country
         };
 
-        console.log(data.username);
-        console.log(data.password);
-        console.log(data.country);
+        axios
+            .post("http://localhost:8080/auth/signup", data)
+            .then((response) => {
 
-  
-      axios
-      .post("http://localhost:8080/auth/signup", data)
-      .then((response) => {
-          console.log(response.data);
-          navigate("/signin");
-      })
-      .catch((error) => {
-          console.error("Error:", error);
-      });
-  };
-  return (
-    <body className='rg'>
-    <div className='register-wrapper'>
-      <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <div className="register-input-box">
-        <input 
-            type="text" 
-            placeholder='Username' 
-            value={username} 
-            onChange={(event) => setUsername(event.target.value)} 
-            required 
-          />
-          <FaUser className='icon' />
+                navigate("/signin");
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 401) {
+                    setIs401Reg(true);
+
+                    console.log("click");
+                } else {
+                    console.error("Error:", error);
+                }
+
+            });
+    };
+    return (
+        <div className='rg'>
+
+
+            {is401Reg && (
+                <div className='errorMessageRegister'>
+                    <p>The username is already taken. Please choose another one.</p>
+                </div>
+            )}
+
+
+            {isBlockVisible && (
+                <div className='countryList'>
+                    <div className='boxToHideCountry'>
+                        <ul>
+                            {["Argentina", "Australia", "Austria", "Belarus", "Brazil", "Canada", "China", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece", "India", "Italy", "Japan", "Mexico", "Netherlands", "Nigeria", "Norway", "Poland", "Portugal", "Russia", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "USA", "Ukraine"].map((country, index) => (
+
+                                <button type="button" className='countryFromList' onClick={() => {
+                                    setCountry(country);
+                                    toggleBlockVisibility();
+                                }}>
+                                    {country}
+                                </button>
+
+                            ))}
+
+                        </ul>
+                    </div>
+                </div>
+            )}
+            <div className='register-wrapper'>
+
+                <form onSubmit={handleSubmit}>
+                    <h1>Register</h1>
+                    <div className="register-input-box">
+                        <input
+                            type="text"
+                            placeholder='Username'
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                            required
+                        />
+                        <FaUser className='icon'/>
+                    </div>
+                    <div className="register-input-box">
+                        <input
+                            type="password"
+                            placeholder='Password'
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            required
+                        />
+                        <FaLock className='icon'/>
+                    </div>
+
+                    <div className="register-input-box">
+                        <FaAsterisk className='asterisk'/>
+                        <button type="button" onClick={toggleBlockVisibility} className='showCountries'>
+                            <p className='countryText'>
+
+                                {!country && (
+                                    <p> Choose the country</p>
+                                )}
+
+                                {country}
+
+                            </p>
+                            <IoEarth className='icon'/>
+                        </button>
+
+                    </div>
+
+                    <button type="submit" className='register'>Register</button>
+
+                    <div className="register-link">
+                        <p> Already have an account? <Link to={"/signin"}> Login
+                        </Link></p>
+
+                    </div>
+                </form>
+            </div>
         </div>
-        <div className="register-input-box">
-        <input 
-            type="password" 
-            placeholder='Password' 
-            value={password} 
-            onChange={(event) => setPassword(event.target.value)} 
-            required 
-          />
-          <FaLock className='icon' />
-        </div>
-
-        <div className="register-input-box">
-          {/* Используем элемент select для выбора страны */}
-          <select 
-          value={country} 
-           onChange={(event) => setCountry(event.target.value)} 
-           required
-           >
-           
-            <option value="" disabled>Choose your country</option> 
-            <option value="Argentina">Argentina</option>
-            <option value="Australia">Australia</option>
-            <option value="Austria">Austria</option>
-            <option value="Belarus">Belarus</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Canada">Canada</option>
-            <option value="China">China</option>
-            <option value="Denmark">Denmark</option>
-            <option value="Egypt">Egypt</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Germany">Germany</option>
-            <option value="Greece">Greece</option>
-            <option value="India">India</option>
-            <option value="Italy">Italy</option>
-            <option value="Japan">Japan</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="Norway">Norway</option>
-            <option value="Poland">Poland</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Russia">Russia</option>
-            <option value="South Africa">South Africa</option>
-            <option value="South Korea">South Korea</option>
-            <option value="Spain">Spain</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Turkey">Turkey</option>
-            <option value="UK">United Kingdom</option>
-            <option value="USA">United States of America</option>
-            <option value="Ukraine">Ukraine</option>
-        </select>
-
-          <IoEarth className='icon' />
-        </div>
-
-
-        <button type="submit">Register</button>
-
-        <div className="register-link">
-          <p> Already have an account? <Link to={"/signin"}> Login
-          </Link> </p>
-          
-        </div>
-      </form>
-    </div>
-    </body>
-  );
+    );
 }
 
 export default RegisterForm;

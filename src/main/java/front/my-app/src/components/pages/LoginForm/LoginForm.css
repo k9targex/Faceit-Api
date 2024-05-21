@@ -90,3 +90,27 @@
 .register-link  a:hover{
     text-decoration: underline;
 }
+
+.errorMessageLogin{
+
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 650px;
+  height: 120px;
+  width: 450px;
+  border:2px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(70px);
+  box-shadow:0 0 10px rgba(237, 237, 237, 0.984);
+  color: #fff;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+
+.errorMessageLogin:hover{
+    transform: scale(1.05);
+  
+  }

@@ -1,30 +1,39 @@
-import React, { useState,useContext, useRef,useEffect  } from 'react';
+import React, { useState,useEffect  } from 'react';
 
 import {Parallax,ParallaxLayer} from '@react-spring/parallax'
 import './HomePage.css';
 import TextBlock from './TextBlock';
-import { SiFaceit } from "react-icons/si";
 import Cookies from 'js-cookie';
 import axios from "axios";
-import { SlMagnifier,SlGraph  } from "react-icons/sl";
-import {  Link,useNavigate } from "react-router-dom"
+import { SlMagnifier } from "react-icons/sl";
+import { useNavigate } from "react-router-dom"
 
 export const HomePage = () => {
     const navigate = useNavigate();
-
-    const [tokenState,setTokenState] = useState('');
-
     const [nickname, setNickname] = useState('');
-   
+    const [playerStatus, setPlayerStatus] = useState(false);
+
+    const handleClickPlayer = (event) => {
+        setPlayerStatus(false); 
+    };
+  
+
+
     useEffect(() => {
         const token = Cookies.get('token');
         if (!token) {
             // Если токен отсутствует, перенаправляем на страницу регистрации
             navigate("/message");
-        } else {
-            setTokenState(token);
         }
-    }, []);
+        if(playerStatus)
+            document.addEventListener('click', handleClickPlayer);
+        return () => {
+            if(playerStatus)
+          document.removeEventListener('click', handleClickPlayer);
+        };
+    }, [playerStatus]);
+
+
     const handleSubmit = async (event) => {
         event.preventDefault(); 
         const data = {
@@ -33,17 +42,13 @@ export const HomePage = () => {
     
    
       const token = Cookies.get('token');
-     
-      axios
-        .get("http://localhost:8080/api/v1/faceit/info",{
 
-            params: {
-                nickname: data.nickname
-            },
+      axios
+        .post("http://localhost:8080/api/v1/faceit/info",data,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        } )
+        })
         .then((response) => {
             const {nickname,country,avatar} = response.data.playerInfo.items[0];
             const playerStats = response.data.playerStats.lifetime;
@@ -73,12 +78,20 @@ export const HomePage = () => {
                      Cookies.set('current_win', currentWinStreak);
                      Cookies.set('longest_win', longestWinStreak);
                      Cookies.set('lvl', lvl);
-            
                      navigate("/stats");
-                    //  window.location.reload();
         })
         .catch((error) => {
-            console.error("Error:", error);
+            if (error.response && error.response.status === 404) {
+             
+                setPlayerStatus(true);
+              }
+              if (error.response.status === 401) {
+                navigate("/message");
+              }
+              else{
+                console.error("Error:", error);
+              }
+            
         });
         
     };
@@ -87,8 +100,7 @@ export const HomePage = () => {
     <div className="hm">
     <form onSubmit={handleSubmit}>
        
-
-             
+    
 
         <Parallax pages={2} style={{top: '0',left:'0'}} className="animation">
 
@@ -104,6 +116,12 @@ export const HomePage = () => {
                 </ParallaxLayer>
               
                 <div className="search">
+                {playerStatus && (
+                    <div className='noPlayer'>
+                     <p>No such player</p>
+                    </div>
+                 )}
+           
                     <div className='search-wrapper'>
                         <input className='inputNick'
                          type="text" 

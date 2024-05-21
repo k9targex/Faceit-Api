@@ -30,6 +30,7 @@ public class SecurityController {
   }
 
 
+
   @PatchMapping("/editPassword")
   public ResponseEntity<String> editPassword(
       @RequestBody PasswordRequest passwordRequest, HttpServletRequest request) {

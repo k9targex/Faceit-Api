@@ -6,7 +6,7 @@ export const Message = () => {
   return (
     <div className='message-wrapper'>
       <div className='messageBox'>
-      <p className='message'>Sign up please!</p>
+      <p className='message'>Login please!</p>
       <Link to="/signup">
         <button className='buttonDoor'>
         <BiDoorOpen className='door' />

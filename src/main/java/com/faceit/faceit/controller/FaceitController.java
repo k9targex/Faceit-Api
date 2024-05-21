@@ -1,15 +1,12 @@
 package com.faceit.faceit.controller;
 
 import com.faceit.faceit.model.PlayerInfoAndStats;
+import com.faceit.faceit.model.dto.PlayerRequest;
 import com.faceit.faceit.service.FaceitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @Controller
@@ -40,8 +37,8 @@ public class FaceitController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + ex.getMessage());
   }
 
-  @GetMapping("/faceit/info")
-  public ResponseEntity<PlayerInfoAndStats> getControl(@RequestParam(defaultValue = "s1mple") String nickname, Model model) {
-    return new ResponseEntity<>(faceitService.getRequest(nickname), HttpStatus.OK);
+  @PostMapping("/faceit/info")
+  public ResponseEntity<PlayerInfoAndStats> getControl(@RequestBody PlayerRequest playerRequest) {
+    return new ResponseEntity<>(faceitService.getRequest(playerRequest.getNickname()), HttpStatus.OK);
   }
 }

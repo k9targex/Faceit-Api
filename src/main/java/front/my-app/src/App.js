@@ -1,7 +1,6 @@
 // App.jsx
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-// import Header from "./components/header/Header";
 import HomePage from "./components/pages/HomePage/HomePage";
 import SignIn from "./components/pages/LoginForm/LoginForm";
 import SignUp from "./components/pages/RegisterForm/RegisterForm";

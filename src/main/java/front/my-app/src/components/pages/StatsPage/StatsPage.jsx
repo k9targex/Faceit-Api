@@ -2,23 +2,23 @@
 import './StatsPage.css'
 import Cookies from 'js-cookie';
 import axios from "axios";
-import React, { useState,useContext, useRef,useEffect  } from 'react';
-import { SiFaceit } from "react-icons/si";
-import {  Link,useNavigate } from "react-router-dom"
-import { GiSkullCrack,GiTripleSkulls } from "react-icons/gi";
+import React, { useState,useEffect  } from 'react';
+import {  useNavigate } from "react-router-dom"
+import { GiSkullCrack,GiTripleSkulls,GiAngelOutfit } from "react-icons/gi";
 import { FiPercent } from "react-icons/fi";
 import { LuCrown } from "react-icons/lu";
 import { BsGraphUp } from "react-icons/bs";
-import { IoHeartDislikeSharp,IoHeartDislikeOutline,IoSkullOutline  } from "react-icons/io5";
+import { IoHeartDislikeOutline  } from "react-icons/io5";
 import { RiHeartAdd2Line } from "react-icons/ri";
 import { SlMagnifier,SlGraph  } from "react-icons/sl";
-import { GiAngelOutfit } from "react-icons/gi";
+import { IoMdExit } from "react-icons/io";
 export const StatsPage = () => {
   
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [tokenState,setTokenState] = useState('');
   const [isPlayerInList, setIsPlayerInList] = useState(false);
+  const [playerStatusStats, setPlayerStatusStats] = useState(false);
  
   useEffect(() => {
     const token = Cookies.get('token');
@@ -30,9 +30,24 @@ export const StatsPage = () => {
       }
   }, []);
 
+  const handleClickStats = (event) => {
+    setPlayerStatusStats(false); 
+    console.log("sdf");
+  };
+
+
+  useEffect(() => { 
+    if(playerStatusStats)
+      document.addEventListener('click', handleClickStats);
+  return () => {
+      if(playerStatusStats)
+    document.removeEventListener('click', handleClickStats);
+  };
+  }, [playerStatusStats]);
+
+
   const backgroundImageUrl = Cookies.get('avatar');
   const username = Cookies.get('username');
-  const country = Cookies.get('country');
 
   const k_d =Cookies.get('k_d');
   const av_headshots =Cookies.get('av_headshots');
@@ -49,28 +64,30 @@ export const StatsPage = () => {
   const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
   
     const avatarStyle = {
-        backgroundImage: `url(${backgroundImageUrl})`, // “áâ ­ ¢«¨¢ ¥¬ ä®­®¢®¥ ¨§®¡à ¦¥­¨¥
-        backgroundSize: 'cover', // “áâ ­ ¢«¨¢ ¥¬ à §¬¥à ä®­ 
-        backgroundPosition: 'center', // “áâ ­ ¢«¨¢ ¥¬ ¯®§¨æ¨î ä®­ 
+        backgroundImage: `url(${backgroundImageUrl})`, 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
     };
- 
+    const handleExit = () => {
+      // ï¿½ë¯®ï¿½ï¿½ï¿½ï¿½ï¿½ à¥¤ï¿½à¥ªï¿½ ï¿½ï¿½ ï¿½ï¿½ã£®ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      navigate("/signin");
+    };
     const handleSubmit = async (event,nickname) => {
         event.preventDefault(); 
         const data = {
             nickname: nickname
         };
     
-     
-      axios
-        .get("http://localhost:8080/api/v1/faceit/info",{
 
-            params: {
-                nickname: data.nickname
-            },
-            headers: {
-                Authorization: `Bearer ${tokenState}`
-            }
-        } )
+      axios
+      .post('http://localhost:8080/api/v1/faceit/info', data,
+        {
+        headers:
+        {
+          Authorization: `Bearer ${tokenState}`
+        }
+      
+      })
         .then((response) => {
             const {nickname,country,avatar} = response.data.playerInfo.items[0];
             const playerStats = response.data.playerStats.lifetime;
@@ -102,7 +119,16 @@ export const StatsPage = () => {
                      window.location.reload();
         })
         .catch((error) => {
-            console.error("haha:", error);
+          if (error.response.status === 404) {
+             
+            setPlayerStatusStats(true);
+          }
+          if (error.response.status === 401) {
+            navigate("/message");
+          }
+          else{
+            console.error("Error:", error);
+          }
         });
         
     };
@@ -144,6 +170,9 @@ export const StatsPage = () => {
         window.location.reload();
       })
       .catch((error) => {
+        if (error.response.status === 401) {
+          navigate("/message");
+        }
           console.error("haha:", error);
       });
    
@@ -176,19 +205,19 @@ export const StatsPage = () => {
       }
     })
     .catch((error) => {
-      console.error("haha:", tokenState);
-
-        console.error("haha:", error);
+      if (error.response.status === 401) {
+        navigate("/message");
+      }
     });
     
  
 };
 
 useEffect(() => {
-  const checkPlayerInList = () => {
+    const checkPlayerInList = () => {
     const nickname = Cookies.get('username');
-      const nicknamesString = Cookies.get('favoritePlayers');
-      const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
+    const nicknamesString = Cookies.get('favoritePlayers');
+    const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
 
       setIsPlayerInList(nicknames.includes(nickname));
   };
@@ -196,18 +225,21 @@ useEffect(() => {
   checkPlayerInList();
 }, [nickname]);
 
-  const checkPlayerInList = () => {
-  nickname = Cookies.get('username');
-  const nicknamesString = Cookies.get('favoritePlayers');
-  const nicknames = nicknamesString ? JSON.parse(nicknamesString) : [];
-  return nicknames.includes(nickname);
-};
+
 
   return (
     <div className='stats-wrapper'>
             <form  onSubmit={(event) => handleSubmit(event, nickname)} >
 
       <div className='inputPlayer'>
+
+      {playerStatusStats && (
+                    <div className='noPlayerStats'>
+                     <p>No such player</p>
+                    </div>
+                 )}
+
+
       {!isPlayerInList && (
       <button
         type="button"
@@ -227,6 +259,10 @@ useEffect(() => {
                         />
       <button type="submit" className='buttonStats' > 
       <SlMagnifier className='findIcon'/>
+      </button>
+
+      <button type="submit" className='buttonExit' onClick={handleExit} > 
+        <IoMdExit className='exitIcon'/>
       </button>
       </div>
       
