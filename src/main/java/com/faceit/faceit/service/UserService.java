@@ -161,36 +161,36 @@ public class UserService implements UserDetailsService {
     return String.format("Игрок с ником %s был успешно добавлен", nickname);
   }
 
-public String addManyPlayersToUser(String username, List<String> nicknames) {
-  User user =
-          userRepository
-                  .findUserByUsername(username)
-                  .orElseThrow(
-                          () ->
-                                  new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
+  public String addManyPlayersToUser(String username, List<String> nicknames) {
+    User user =
+        userRepository
+            .findUserByUsername(username)
+            .orElseThrow(
+                () ->
+                    new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, username)));
 
-  return nicknames.stream()
-          .map(nickname -> {
-            Player player =
-                    playerRepository
-                            .findPlayerByNickname(nickname)
-                            .orElseGet(
-                                    () -> {
-                                      Player newPlayer = new Player();
-                                      newPlayer.setNickname(nickname);
-                                      return playerRepository.save(newPlayer);
-                                    });
+    return nicknames.stream()
+        .map(
+            nickname -> {
+              Player player =
+                  playerRepository
+                      .findPlayerByNickname(nickname)
+                      .orElseGet(
+                          () -> {
+                            Player newPlayer = new Player();
+                            newPlayer.setNickname(nickname);
+                            return playerRepository.save(newPlayer);
+                          });
 
-            if (user.getFavoritePlayers().contains(player)) {
-              return String.format("Игрок с ником %s был добавлен пользователю ранее", nickname);
-            } else {
-              user.getFavoritePlayers().add(player);
-              userRepository.save(user);
-              saveUserCache(user);
-              return String.format("Игрок с ником %s был успешно добавлен", nickname);
-            }
-          })
-          .collect(Collectors.joining("\n"));
+              if (user.getFavoritePlayers().contains(player)) {
+                return String.format("Игрок с ником %s был добавлен пользователю ранее", nickname);
+              } else {
+                user.getFavoritePlayers().add(player);
+                userRepository.save(user);
+                saveUserCache(user);
+                return String.format("Игрок с ником %s был успешно добавлен", nickname);
+              }
+            })
+        .collect(Collectors.joining("\n"));
   }
-
 }

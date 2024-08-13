@@ -41,9 +41,7 @@ public class TokenFilter extends OncePerRequestFilter {
 
     if (!(request.getRequestURI().equals("/auth/signin"))
         && !(request.getRequestURI().equals("/auth/signup"))) {
-      String headerAuth = request.getHeader("Authorization");
-      if (headerAuth != null && headerAuth.startsWith("Bearer ")) {
-        jwt = headerAuth.substring(7);
+        jwt = jwtCore.getTokenFromRequest(request);
         try {
           username = jwtCore.getNameFromJwt(jwt);
           if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -56,7 +54,7 @@ public class TokenFilter extends OncePerRequestFilter {
         } catch (Exception e) {
           log.error("Invalid JWT token");
         }
-      }
+
     }
     filterChain.doFilter(request, response);
   }

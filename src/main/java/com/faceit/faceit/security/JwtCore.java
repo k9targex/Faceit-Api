@@ -2,13 +2,12 @@ package com.faceit.faceit.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.Date;
 
 @Component
 public class JwtCore {
@@ -31,13 +30,15 @@ public class JwtCore {
   public String getNameFromJwt(String token) {
     return Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody().getSubject();
   }
-  public String getTokenFromRequest(String authorizationHeader) {
-    String token;
-    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-      token = authorizationHeader.substring(7);
-    } else {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+  public String getTokenFromRequest(HttpServletRequest request) {
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+      for (Cookie cookie : cookies) {
+        if ("token".equals(cookie.getName())) {
+          return cookie.getValue();
+        }
+      }
     }
-    return token;
+    return "unknown";
   }
 }

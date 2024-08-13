@@ -75,25 +75,7 @@ const RegisterForm = () => {
             )}
 
 
-            {isBlockVisible && (
-                <div className='countryList'>
-                    <div className='boxToHideCountry'>
-                        <ul>
-                            {["Argentina", "Australia", "Austria", "Belarus", "Brazil", "Canada", "China", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece", "India", "Italy", "Japan", "Mexico", "Netherlands", "Nigeria", "Norway", "Poland", "Portugal", "Russia", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "USA", "Ukraine"].map((country, index) => (
-
-                                <button type="button" className='countryFromList' onClick={() => {
-                                    setCountry(country);
-                                    toggleBlockVisibility();
-                                }}>
-                                    {country}
-                                </button>
-
-                            ))}
-
-                        </ul>
-                    </div>
-                </div>
-            )}
+           
             <div className='register-wrapper'>
 
                 <form onSubmit={handleSubmit}>
@@ -120,7 +102,6 @@ const RegisterForm = () => {
                     </div>
 
                     <div className="register-input-box">
-                        <FaAsterisk className='asterisk'/>
                         <button type="button" onClick={toggleBlockVisibility} className='showCountries'>
                             <p className='countryText'>
 
@@ -131,6 +112,8 @@ const RegisterForm = () => {
                                 {country}
 
                             </p>
+                        <FaAsterisk className='asterisk'/>
+
                             <IoEarth className='icon'/>
                         </button>
 
@@ -145,6 +128,25 @@ const RegisterForm = () => {
                     </div>
                 </form>
             </div>
+            {isBlockVisible && (
+                <div className='countryList'>
+                    <div className='boxToHideCountry'>
+                        <ul>
+                            {["Argentina", "Australia", "Austria", "Belarus", "Brazil", "Canada", "China", "Denmark", "Egypt", "Finland", "France", "Germany", "Greece", "India", "Italy", "Japan", "Mexico", "Netherlands", "Nigeria", "Norway", "Poland", "Portugal", "Russia", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "USA", "Ukraine"].map((country, index) => (
+
+                                <button type="button" className='countryFromList' onClick={() => {
+                                    setCountry(country);
+                                    toggleBlockVisibility();
+                                }}>
+                                    {country}
+                                </button>
+
+                            ))}
+
+                        </ul>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

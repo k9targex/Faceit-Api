@@ -12,19 +12,16 @@ export const HomePage = () => {
     const navigate = useNavigate();
     const [nickname, setNickname] = useState('');
     const [playerStatus, setPlayerStatus] = useState(false);
+    const [tokenStatus, setTokenStatus] = useState(false);
 
     const handleClickPlayer = (event) => {
         setPlayerStatus(false); 
     };
-  
 
 
+    
     useEffect(() => {
-        const token = Cookies.get('token');
-        if (!token) {
-            // Если токен отсутствует, перенаправляем на страницу регистрации
-            navigate("/message");
-        }
+     
         if(playerStatus)
             document.addEventListener('click', handleClickPlayer);
         return () => {
@@ -42,12 +39,10 @@ export const HomePage = () => {
     
    
       const token = Cookies.get('token');
+      axios.defaults.withCredentials = true;
 
       axios
         .post("http://localhost:8080/api/v1/faceit/info",data,{
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
         })
         .then((response) => {
             const {nickname,country,avatar} = response.data.playerInfo.items[0];
@@ -81,8 +76,7 @@ export const HomePage = () => {
                      navigate("/stats");
         })
         .catch((error) => {
-            if (error.response && error.response.status === 404) {
-             
+            if (error.response && (error.response.status === 404 || error.response.status === 400)) {
                 setPlayerStatus(true);
               }
               if (error.response.status === 401) {

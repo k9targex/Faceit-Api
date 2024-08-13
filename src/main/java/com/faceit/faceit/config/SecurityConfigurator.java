@@ -82,6 +82,7 @@ public class SecurityConfigurator {
                           Arrays.asList("GET", "POST", "PUT", "DELETE")); // Разрешенные методы
                       configuration.setAllowedHeaders(
                           Arrays.asList("Authorization", "Content-Type")); // Разрешенные заголовки
+                      configuration.setAllowCredentials(true); // Разрешение использования куки
                       return configuration;
                     }))
         .exceptionHandling(
@@ -95,14 +96,13 @@ public class SecurityConfigurator {
                         "/users/getPlayers/**",
                         "users/deletePlayer",
                         "api/v1/faceit/info",
-                            "/users/addPlayer",
+                        "/users/addPlayer",
+                        "auth/secure",
                         "users/getUserByName",
                         "faceit/info")
                     .hasAnyRole("ADMIN", "USER")
                     .requestMatchers("/users/**", "/country/**")
                     .hasRole("ADMIN")
-                    .requestMatchers("/auth/**")
-                    .permitAll()
                     .anyRequest()
                     .permitAll())
         .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);

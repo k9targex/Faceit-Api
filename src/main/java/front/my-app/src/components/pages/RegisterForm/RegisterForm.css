@@ -162,8 +162,9 @@
   }
 
   .countryList{
-    position: absolute;
-    margin-left: 600px;
+    /* position: absolute; */
+
+    margin-left: 10px;
     height: 490px;
     width: 220px;
     background: transparent;
@@ -258,9 +259,10 @@
 
   }
   .asterisk{
-    position: absolute;
-    font-size: 0.7em;
-    margin-left: 265px;
+    position:absolute;
+    right: -10px;
+    top:-10%;
+    font-size:0.7em;
   }
 
   .errorMessageRegister:hover{

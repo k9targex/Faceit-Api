@@ -5,12 +5,13 @@ import com.faceit.faceit.model.entity.User;
 import com.faceit.faceit.security.JwtCore;
 import com.faceit.faceit.service.UserService;
 import com.faceit.faceit.utilities.RequestCounter;
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/users")
@@ -58,32 +59,32 @@ public class UserController {
 
   @PostMapping("/addPlayer")
   public ResponseEntity<String> addPlayerToUser(
-      @RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
-    String token = jwtCore.getTokenFromRequest(authorizationHeader);
+          HttpServletRequest request, @RequestParam String nickname) {
+    String token = jwtCore.getTokenFromRequest(request);
     String username = jwtCore.getNameFromJwt(token);
     return ResponseEntity.ok(userService.addPlayerToUser(username, nickname));
   }
 
   @PostMapping("/addManyPlayers")
   public ResponseEntity<String> addManyPlayersToUser(
-          @RequestHeader("Authorization") String authorizationHeader, @RequestParam List<String> nicknames) {
-    String token = jwtCore.getTokenFromRequest(authorizationHeader);
+          HttpServletRequest request, @RequestParam List<String> nicknames) {
+    String token = jwtCore.getTokenFromRequest(request);
     String username = jwtCore.getNameFromJwt(token);
     return ResponseEntity.ok(userService.addManyPlayersToUser(username, nicknames));
   }
 
   @GetMapping("/getPlayers")
   public ResponseEntity<Set<Player>> getAllPlayers(
-      @RequestHeader("Authorization") String authorizationHeader) {
-    String token = jwtCore.getTokenFromRequest(authorizationHeader);
+          HttpServletRequest request) {
+    String token = jwtCore.getTokenFromRequest(request);
     String username = jwtCore.getNameFromJwt(token);
     return ResponseEntity.ok(userService.getFavoritePlayersByUsername(username));
   }
 
   @DeleteMapping("/deletePlayer")
   public ResponseEntity<String> deletePlayer(
-      @RequestHeader("Authorization") String authorizationHeader, @RequestParam String nickname) {
-    String token = jwtCore.getTokenFromRequest(authorizationHeader);
+          HttpServletRequest request, @RequestParam String nickname) {
+    String token = jwtCore.getTokenFromRequest(request);
     String username = jwtCore.getNameFromJwt(token);
     userService.removePlayer(username, nickname);
     return ResponseEntity.ok("Player was successfully deleted");

@@ -1,0 +1,678 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+.stats-wrapper{
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+        " q ww input exit"
+        " q avatar stats players";
+    grid-template-columns: 3% auto 50% 15%;
+    grid-template-rows:  10% 75%; 
+    background-image: url(./../../assets/firewatch-4.0.jpg);
+     background-size: cover; 
+    background-position: center; 
+    min-height: 100vh;
+    height: auto;
+    gap:1%;
+
+    /* position: relative; ��������� ��� �ᥢ������� */
+}
+.main-info{
+    grid-area: avatar;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    background: transparent;
+    backdrop-filter: blur(80px);
+    width:100%;
+    height:100%;
+    padding: 10%;
+    border-radius: 20px;
+
+}
+.avatarBox{
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    background-color: rgba(0, 0, 0, 0.407);
+    width: 100%;
+    aspect-ratio: 1/1;
+    padding:0.5%;
+    margin-bottom: 4%;
+    border-radius: 20px;
+
+}
+.userInfo{
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    justify-content: center;
+    align-items: center;
+    margin-top:10%;
+    height:30%;
+    width:100%;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+
+}
+.userAvatar{
+
+    height:100%;
+    width:100%;
+    border-radius: 20px;
+}
+
+
+.main-stats{
+    grid-area:stats;
+
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-areas: 
+        "1v 2v 3v 4v"
+        "5v 6v 7v 8v";
+    grid-template-columns: repeat(4,25%);
+    grid-template-rows:  50% 50%; 
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    background: transparent;
+    backdrop-filter: blur(80px);
+    height:100%;
+    width:100%;
+    border-radius: 20px;
+    padding:5%;
+}
+
+
+.stats{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.336);
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    transition: transform 0.5s ease;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    text-shadow: 0px 0px 2px rgb(255, 255, 255); 
+    height:95%;
+    width:95%;
+    color:rgb(235, 239, 243);
+    font-size: 25px;
+    margin:3%;
+    
+    border-radius: 20px;
+}
+.k_d{
+    grid-area:1v; 
+}
+.av_headshots{
+    grid-area:2v;
+}
+
+.total_headshots{
+    grid-area:3v;
+}
+.matches{
+    grid-area:4v;
+}
+
+.wins{
+    grid-area:5v;
+}
+.win_rate{
+    grid-area:6v;
+}
+
+.current_win{
+    grid-area:7v;
+}
+.longest_win{
+    grid-area:8v;
+}
+
+
+.inputPlayer{
+    grid-area:input;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width :100%;
+    border-radius: 20px;
+}
+
+
+
+.inputFaceit{
+    height:40%;
+    width: 60%;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.2); 
+    outline: none;
+    padding: 20px 20px 20px 20px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color:aliceblue;
+    border: 1px solid rgb(255, 255, 255);
+
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+    transition: transform 0.3s ease;
+}
+.inputFaceit::placeholder{
+    color: rgba(39, 37, 37, 0.2); 
+}
+.buttonStats{
+    background-color: transparent;
+    height:35%;
+    width:10%;
+    outline: none;
+    top:6px;
+    border:none;
+    transition: transform 0.3s ease;
+}
+
+.buttonStats:hover{
+    
+    transform: scale(1.2);
+  }
+.inputFaceit:hover{
+    transform: scale(1.02);
+
+    box-shadow:0 0 10px rgba(255, 255, 255, 0.984);
+}
+
+.stats:hover{
+    transform: scale(1.03);
+
+  }
+  .userInfo:hover{
+    transform: scale(1.02);
+
+  }
+
+  .favorite-players{
+    display: flex;
+    flex-direction: column;
+    grid-area: players;
+    box-shadow:0 0 5px rgba(237, 237, 237, 0.984);
+    background: transparent;
+    backdrop-filter: blur(80px);
+    width:100%;
+    border-radius: 20px;
+    padding: 20px 10px 10px 10px;
+
+}
+.listOfPlayers{
+    min-height:40vh; 
+    max-height:60vh;
+    width:100%;
+    overflow: auto;
+    padding: 5px 10px 10px 10px;
+
+}
+.ulList {
+
+    height:10%;
+}
+.favorite-players .title{
+    color:aliceblue;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom:25px;
+    font-family: "Outfit", sans-serif;
+}
+
+
+
+
+.playerNickname:hover{
+    
+    transform: scale(1.05);
+
+}
+
+.listOfPlayers::-webkit-scrollbar {
+    border:none;
+    outline: none;
+    scrollbar-width: thin; 
+    background-color: transparent; 
+
+  }
+  
+  .listOfPlayers::-webkit-scrollbar-track {
+    border:none;
+    outline: none;
+    background-color: transparent; 
+
+  }
+  
+
+  .listOfPlayers::-webkit-scrollbar-thumb {
+    border:none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.452); 
+    border-radius: 5px;
+  }
+  
+
+  .listOfPlayers::-webkit-scrollbar-thumb:hover {
+    border:none;
+    outline: none;
+    background-color: rgba(55, 54, 54, 0.452); 
+
+  }
+
+  .iconFaceit{
+    margin-top: 20%;
+    font-size: 4rem;
+    color:aliceblue
+
+
+  }
+  .info{
+    text-align: center;
+    justify-content: center;
+    height: 10%;
+    width:  80%;
+    margin: 10%;
+    margin-top: 15%;
+  }
+  .user{
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+    color:aliceblue;
+    text-shadow: 1px 0px 2px rgb(255, 255, 255);
+      
+}
+.userName{
+    height: 100%;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+
+    font-size: 50px;
+    color:aliceblue;
+    border-radius: 20px;
+
+    text-shadow: 1px 0px 2px rgb(255, 255, 255); 
+  
+      
+}
+.playerNickname{
+    position: relative;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.452);
+    color:aliceblue;
+    margin-bottom:10px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow:0 0 5px rgba(255, 255, 255, 0.984);
+}
+.dislike{  
+    position: absolute;
+    background-color: transparent;
+    border:none;
+    top:10px;
+    right:10px;
+    outline:none;
+    height:30px;
+    width:30px;
+    border-radius: 10px;
+    transition: transform 0.8s ease;
+  }
+.choosePlayer{
+    background-color: transparent;
+    border:none;
+    outline: none;
+    height:100%;
+    width: 100%;
+
+}
+.hide{
+    position: absolute;
+    right:10px;
+    width: 140px;
+    top:10px;
+    background-color: transparent;
+    overflow: hidden;
+    text-align: left;
+    
+}
+.boxForNick{
+    position: relative;
+     width:160px;
+     height: 50px;
+    background-color:transparent;
+    padding: 5px 20px 5px 20px;
+
+    color:aliceblue;
+    margin-bottom:10px;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    border-radius: 10px;
+
+}
+.dislikeIcon{
+    color:white;
+    font-size: 1.7rem;
+    transition: transform 0.3s ease;
+
+}
+.dislikeIcon:hover{
+    transform: scale(1.3);
+
+}
+.exitIcon{
+    font-size: 1em;
+    height: 100%;
+    width: 100%;
+    color:rgb(255, 255, 255);
+    background-color: transparent;
+
+}
+.like{
+    
+    background-color: transparent;
+    height: 40%;
+    width:10%;
+    top:4px;
+    border-radius: 20px;
+    outline: none;
+    border:none;
+    transition: transform 0.3s ease;
+
+
+}
+.like:hover{
+    transform: scale(1.2);
+  
+  }
+
+  .likeIcon{
+    font-size: 1em;
+
+    height: 100%;
+    width: 100%;
+    color:rgb(255, 255, 255);
+    background-color: transparent;
+
+  }
+
+  .findIcon{
+    height: 100%;
+    width: 100%;
+    color:aliceblue;
+    font-size: 0.5em;
+    stroke-width:30px;
+
+  }
+  .noPlayerStats {
+    transition: transform 0.5s ease;
+    font-family: "Outfit", sans-serif;
+    font-weight: 900;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4%;
+  width: 30%;
+  color: #fff;
+  border-radius: 10px;
+  }
+  .noPlayerStats:hover{
+    transform: scale(1.05);
+  
+  }
+
+.exitGrid{
+    display: flex;
+    justify-content: flex-end; 
+    grid-area: exit;
+    height: 100%;
+    width: 100%;
+}
+.buttonExit{
+    height: 100%;
+    width: 18%;
+    font-size: 2.8em;
+    background-color:transparent;
+    border:none;
+    outline: none;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 1300px) and (max-width:1600px) {
+    .exitGrid{
+        z-index: 0;
+    }
+    .buttonExit{
+        height: 100%;
+         width: 4%;
+    }
+    .stats-wrapper{
+        display: grid;
+        grid-template-areas: 
+        "q input    exit"
+        "q avatar   stats"
+        "q players  stats";
+        grid-template-columns: 2% 22% 70%;
+        grid-template-rows: 10% 50% 35%; 
+    }
+    .avatarBox{ 
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+    .inputPlayer{
+        z-index: 1;
+        grid-area:exit;
+    }
+    .inputFaceit{
+        height:40%;
+        width: 60%;
+    }
+
+    .userName{
+        font-size: 1.5em;
+        text-shadow:none;
+        font-weight: 600;   
+    }
+    .ulList {
+        height:10%;
+    }
+    .listOfPlayers{
+        min-height:0vh; 
+        max-height:25vh;
+        height:22vh; 
+    }
+    .userInfo{
+        background-color: rgba(39, 33, 33, 0.407); 
+        border-radius: 10px;
+        
+    }
+    .noPlayerStats{
+        height: 4%;
+        width: 43%;
+    }
+
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 701px) and (max-width: 1300px) {
+    .stats-wrapper{
+        display: grid;
+        grid-template-areas: 
+        "q exit input "
+        "q avatar players"
+        "q r r"
+        "q stats stats";
+       
+        grid-template-columns: 2% 30% 63%;
+        grid-template-rows: 5% 40% 1% 50% ; 
+    }
+    .exitGrid{
+    justify-content: flex-start; 
+    height: 100%;
+    width: 60%;
+
+    }
+    .info{
+        margin: 0%;
+        margin-top:5%;
+        width: 100%;
+
+    }
+    .favorite-players .title{
+        margin-bottom:1%;
+    
+    }
+    
+    .listOfPlayers{
+        margin-top: 0%;
+        min-height:0vh; 
+        max-height:55vh;
+        height:51vh; 
+    }
+    .userName{
+        font-size: 1.8em;
+    }
+    .user{
+        margin-top: 0%;
+        font-size: 1em;
+    
+    }
+    .iconFaceit{
+        margin-top: 15%;
+        font-size: 1.8em;
+    
+    }
+    .info{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        height:20%;
+        width:  100%;
+        margin:0%;
+        margin-top: 5%;
+        font-size: 0.9em;
+    }
+}
+
+
+
+/* Landscape phones and smaller */
+@media (max-width: 700px) {
+/* MOBILE */
+
+.avatarBox{
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-bottom: 0%;
+
+}
+.stats-wrapper{
+    display: grid;
+    grid-template-areas: 
+    "q input "
+    "q2 avatar "
+     "q2 stats "
+     "q2 players";
+    grid-template-columns: 5% 90%;
+    grid-template-rows: 5% auto 40% 18%; 
+    background-attachment: fixed;
+     background-size: cover; 
+    background-position: center;
+    min-height: 100vh; 
+    width: 100%;
+    /* gap:0.5% */
+}
+
+.main-stats{
+    display: grid;
+grid-template-areas: 
+    "1v 2v "
+    "3v 4v"
+    "5v 6v"
+    "7v 8v";
+grid-template-columns: repeat(2,50%);
+grid-template-rows: repeat(4,25%) ; 
+}
+.userInfo{
+    background-color: rgba(39, 33, 33, 0.407); 
+    margin-top:10%;
+    height:20%;
+    width:100%;
+}
+.userName{
+    font-size: 1.8em;
+}
+.exitGrid{
+    grid-area:input;
+    height: 100%;
+    width: 8%;
+    left:10%;
+
+}
+.buttonExit{
+    margin-right: 5%;
+    height:0%;
+    width: 0%;
+}
+.info{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height:25%;
+    width: 100%;
+    margin:0%;
+    margin-top: 10%;
+    font-size: 0.7em;
+    text-shadow: 0px 0px 0px rgb(255, 255, 255);
+    font-weight: 700;
+
+
+}
+.main-info{
+    background-color: rgba(86, 83, 83, 0.407); 
+}
+.user{
+    margin-top: 0%;
+    font-size: 0.8em;
+    text-shadow: 0px 0px 0px rgb(255, 255, 255);
+
+}
+.iconFaceit{
+    margin-top: 10%;
+    font-size: 1.5em;
+
+}
+.buttonStats{
+    margin-left:2%;
+}
+.like{
+    margin-right: 2%;
+
+}
+.listOfPlayers{
+    height:100vh;
+    min-height: 23vh;
+}
+
+
+}

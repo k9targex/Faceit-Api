@@ -36,31 +36,25 @@ const LoginForm = () => {
             username: username,
             password: password
         };
+        axios.defaults.withCredentials = true;
         axios
         .post("http://localhost:8080/auth/signin", data)
         .then((response) => { 
-            const token = response.data;  
-            localStorage.setItem('token', token);
-          
             axios
                 .get(getUser, {
                   params: {
                     username: data.username
-                },
-           
-                headers: {
-                    Authorization: `Bearer ${token}`
                 }
             })
             .then((response) => {
               
                   const nicknames = response.data.favoritePlayers.map(player => player.nickname);
                   const nicknamesString = JSON.stringify(nicknames);
-                    Cookies.set('token', token);
+                    // Cookies.set('token', token);
                     Cookies.set('id', response.data.id);
                     Cookies.set('username', response.data.username);
                     Cookies.set('favoritePlayers', nicknamesString);
-                    navigate("/home");
+                    navigate("/stats");
                     window.location.reload();
                 })
         })

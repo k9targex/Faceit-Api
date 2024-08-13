@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.server.ResponseStatusException;
 
 /** Обработчик исключений для контроллеров. */
 @RestControllerAdvice
@@ -45,7 +46,7 @@ public class ControllerExceptionHandler {
   }
 
   /** Обработчик исключения MissingServletRequestParameterException. */
-  @ExceptionHandler(MissingServletRequestParameterException.class)
+  @ExceptionHandler({MissingServletRequestParameterException.class, ResponseStatusException.class})
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseError handleIllegalArgumentException(
       MissingServletRequestParameterException ex, WebRequest request) {
