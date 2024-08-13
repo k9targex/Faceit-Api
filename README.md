@@ -12,6 +12,24 @@ Faceit Api is a project that provides a simple way to retrieve player statistics
   <img src="Picture3.png" alt="Preview" width="1000"style="border-radius: 40px; overflow: hidden;">
 </p>
 
+## Security and Authentication
+
+This project implements **Spring Security** to ensure that only authenticated and authorized users can access the application's resources. Authentication is handled through **JWT tokens**, which provide a secure and stateless way to manage user sessions.
+
+- **JWT Tokens**: 
+  - The tokens are configured with **HttpOnly** and **Secure** flags to enhance security by ensuring that the tokens are accessible only by the server and transmitted over secure connections (HTTPS).
+
+- **Custom Error Handling**:
+  - A custom error handler is in place to manage exceptions and errors consistently across the application. This ensures that the user experience remains smooth and that sensitive information is not exposed in error messages.
+
+## Logging and Monitoring
+
+The application includes a comprehensive **logging system** that tracks user actions and system events. This allows for detailed monitoring and auditing, which is crucial for maintaining security and performance.
+
+## Caching
+
+To improve performance and reduce the load on external APIs and databases, **caching** is implemented. This ensures that frequently accessed data is stored locally and retrieved quickly, reducing response times and improving user experience.
+
 ## Installation and Running
 
 1. Clone the repository to your local computer:
