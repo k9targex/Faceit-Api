@@ -1,4 +1,7 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)  [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)  [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)  [![Duplications](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi) 
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi) 
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi) 
+[![Duplications](https://sonarcloud.io/api/project_badges/measure?project=k9targex_FaceitApi&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=k9targex_FaceitApi)
 
 # <center>Faceit API</center>
 
@@ -41,6 +44,15 @@
 
 - **Caching**:
   - Caching is implemented to improve performance by reducing the load on external APIs and databases. Frequently accessed data is stored locally, leading to faster retrieval and better user experience.
+
+## Unit Tests
+
+- **Comprehensive Testing**:
+  - All business logic in the application is covered by unit tests, ensuring high reliability and reducing the risk of bugs or regressions. This 100% unit test coverage is a testament to the robustness and quality of the codebase, making the application highly dependable.
+
+<p align="center">
+  <img src="Coverage.png" alt="Unit Test Coverage" width="800" style="border-radius: 20px; overflow: hidden;">
+</p>
 
 ## Installation and Running
 
