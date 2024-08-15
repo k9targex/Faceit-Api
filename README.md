@@ -7,7 +7,7 @@
 
 ## About the Project
 
-**Faceit API** is a project that leverages JWT tokens, CQRS, and Spring Security to provide a streamlined method for retrieving player statistics in **Counter-Strike 2: Global Offensive 2** using the Faceit API. Faceit is a premier platform for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
+**Faceit API** is a project that leverages JWT tokens, and Spring Security to provide a streamlined method for retrieving player statistics in **Counter-Strike 2: Global Offensive 2** using the Faceit API. Faceit is a premier platform for playing multiplayer online games such as Counter-Strike: Global Offensive, Dota 2, and others.
 
 <p align="center">
   <img src="Picture3.png" alt="Preview" width="1000" style="border-radius: 40px; overflow: hidden;">
